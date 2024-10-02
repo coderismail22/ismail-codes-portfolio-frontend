@@ -4,7 +4,15 @@ import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { TbLayoutSidebarLeftCollapse } from "react-icons/tb";
 
-const navitems = [{ title: "Home", path: "/" }];
+const navitems = [
+  { title: "Home", path: "/" },
+  { title: "Services", path: "/" },
+  { title: "Projects", path: "/" },
+  { title: "Blogs", path: "/" },
+  { title: "Notes", path: "/" },
+  { title: "About", path: "/" },
+  { title: "Contact", path: "/" },
+];
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -29,7 +37,7 @@ const Navbar = () => {
           <div>
             <Link to="/">
               {/* LOGO */}
-              <img src="/assets/fsdg.jpg" width={"50px"} />
+              <img src="/src/assets/ic.gif" width={"120px"} />
             </Link>
           </div>
 
@@ -85,11 +93,6 @@ const Navbar = () => {
             ))}
           </section>
         </div>
-
-        <section className="flex gap-4">
-          {/* Social Media Icons */}
-          {/* <IoCart className="text-3xl" /> */}
-        </section>
       </nav>
     </main>
   );

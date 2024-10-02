@@ -9,9 +9,9 @@ const Footer = () => {
           <div>
             <p>
               <img
-                src="/assets/fsdg.jpg"
-                alt="FSDG Logo"
-                className="float-left w-16 h-16 mr-4"
+                src="/src/assets/ic.gif"
+                alt="IC Logo"
+                className="float-left w-16 h-20 mr-4"
               />
             </p>
             <p className="text-[#687279]">
