@@ -2,28 +2,30 @@ import { Typewriter } from "react-simple-typewriter";
 
 const HeroSection = () => {
   return (
-    <section className="bg-gray-100 min-h-screen flex items-center justify-center px-4 md:px-8">
+    <section className="min-h-screen flex items-center justify-center px-4 md:px-8">
       <div className="grid grid-cols-1 md:grid-cols-2  items-center justify-center gap-8">
         {/* Hero Text */}
         <div className="order-2 md:order-1 text-center items-center justify-center space-y-4 ">
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-800">
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-400">
             Hi, It's Ismail
           </h1>
-          <p className="text-lg md:text-xl text-gray-600">
+          <p className="text-lg md:text-xl text-gray-400">
             <span>I am a </span>
-            <Typewriter
-              words={[
-                "Passionate MERN Stack Developer",
-                "UI/UX Enthusiast",
-                "Content Maker",
-              ]}
-              loop={false} // Set true to repeat the animation
-              cursor
-              cursorStyle="|"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={1000}
-            />
+            <span className="text-blue-400 font-semibold">
+              <Typewriter
+                words={[
+                  "Passionate MERN Stack Developer",
+                  "UI/UX Enthusiast",
+                  "Content Maker",
+                ]}
+                loop={false} // Set true to repeat the animation
+                cursor
+                cursorStyle="|"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              />
+            </span>
           </p>
           <div>
             <a

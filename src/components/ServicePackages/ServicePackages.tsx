@@ -2,19 +2,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-// import Image from "next/image";
-// import Link from "next/link";
 
-// import os from "../../../public/icons/os.svg";
-// import cpu from "../../../public/icons/cpu.svg";
-// import ram from "../../../public/icons/ram.svg";
-// import ssd from "../../../public/icons/ssd.svg";
-// import bandwidth from "../../../public/icons/speed.svg";
-// import ip from "../../../public/icons/ip.svg";
-// import license from "../../../public/icons/license.svg";
 import { Link } from "react-router-dom";
-
-// type Props = {};
 
 const ServicePackages = () => {
   return (

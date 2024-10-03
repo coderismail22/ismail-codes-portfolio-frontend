@@ -3,6 +3,7 @@ import HeroSection from "../HeroSection/HeroSection";
 import Services from "../Services/Services";
 import Skills from "../Skills/Skills";
 import Tools from "../Tools/Tools";
+import { Element } from "react-scroll";
 
 const Home = () => {
   const darkStyle = {
@@ -24,7 +25,10 @@ const Home = () => {
     // }}
     >
       <HeroSection />
-      <Services />
+      <Element name="services">
+        <Services />
+      </Element>
+
       {/* <Projects /> */}
       <Skills />
       <Tools />

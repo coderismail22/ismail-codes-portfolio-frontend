@@ -1,17 +1,20 @@
 import clsx from "clsx";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
+
 import { FaBars } from "react-icons/fa";
 import { TbLayoutSidebarLeftCollapse } from "react-icons/tb";
 
 const navitems = [
   { title: "Home", path: "/" },
-  { title: "Services", path: "/" },
+  { title: "Services", path: "services" },
   { title: "Projects", path: "/" },
   { title: "Blogs", path: "/" },
   { title: "Notes", path: "/" },
   { title: "About", path: "/" },
   { title: "Contact", path: "/" },
+  { title: "Tools", path: "tools" },
 ];
 
 const Navbar = () => {
@@ -30,7 +33,7 @@ const Navbar = () => {
   };
 
   return (
-    <main className="mx-auto h-[80px] flex flex-col justify-between z-[9999] px-2 ">
+    <main className="mx-auto h-[80px] flex flex-col justify-between z-[9999] px-2  text-white bg-[#26283b] ">
       <nav className="flex justify-between items-center py-2">
         {/* TODO: Fix this div issue */}
         <div className="flex items-center justify-between  lg:justify-center w-full  ">
@@ -58,7 +61,7 @@ const Navbar = () => {
             <Link
               key={index}
               to={item.path}
-              className="hover:text-[#456C2F] hidden lg:inline-block font-montserrat font-bold text-center text-sm md:text-base w-[50px] lg:w-[60px] 2xl:w-[100px]"
+              className="hover:text-[#456C2F] hover:cursor-pointer hidden lg:inline-block font-montserrat font-bold text-center text-sm md:text-base w-[50px] lg:w-[60px] 2xl:w-[100px]"
             >
               {item.title}
             </Link>
