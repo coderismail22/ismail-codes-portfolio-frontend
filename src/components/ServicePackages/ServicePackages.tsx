@@ -20,7 +20,7 @@ const ServicePackages = () => {
   return (
     <div className="relative flex flex-col  h-full w-full p-4">
       <Tabs
-        defaultValue="vps"
+        defaultValue="fullstack"
         className="w-full flex flex-col justify-center items-center ease-in"
       >
         <TabsList defaultValue="frontend">

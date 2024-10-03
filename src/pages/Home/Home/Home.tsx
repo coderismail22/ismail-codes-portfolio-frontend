@@ -1,9 +1,8 @@
-// import HeroSection from "../HeroSection/HeroSection";
+import HeroSection from "../HeroSection/HeroSection";
 // import Projects from "../Projects/Projects";
 import Services from "../Services/Services";
-// import SkillGraph from "../SkillGraph/SkillGraph";
-// import Skills from "../Skills/Skills";
-// import Tools from "../Tools/Tools";
+import Skills from "../Skills/Skills";
+import Tools from "../Tools/Tools";
 
 const Home = () => {
   const darkStyle = {
@@ -24,11 +23,11 @@ const Home = () => {
     // backgroundRepeat: "repeat-y",
     // }}
     >
-      {/* <HeroSection /> */}
+      <HeroSection />
       <Services />
       {/* <Projects /> */}
-      {/* <Skills /> */}
-      {/* <Tools /> */}
+      <Skills />
+      <Tools />
     </div>
   );
 };

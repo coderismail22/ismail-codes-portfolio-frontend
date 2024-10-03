@@ -1,15 +1,29 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
+import { useInView } from "react-intersection-observer";
+
 // import { cn } from "shadcn/utils"; // for dynamic classNames
 const Skills = () => {
+  // Use useInView to detect when the section is in view
+  const { ref, inView } = useInView({
+    threshold: 0.2, // 20% of the section should be in view to trigger
+    triggerOnce: true, // Animation triggers only once
+  });
+
   const skills = [
-    { name: "HTML", icon: "🔥" },
-    { name: "CSS", icon: "🎨" },
-    { name: "JavaScript", icon: "⚡" },
-    { name: "React", icon: "⚛️" },
-    { name: "Node.js", icon: "🌿" },
-    { name: "Tailwind CSS", icon: "💨" },
-    { name: "MongoDB", icon: "🍃" },
+    { name: "HTML", icon: "/src/assets/svg-icons/html.svg" },
+    { name: "CSS", icon: "/src/assets/svg-icons/css.svg" },
+    { name: "JavaScript", icon: "/src/assets/svg-icons/js.svg" },
+    { name: "TypeScript", icon: "/src/assets/svg-icons/ts.svg" },
+    { name: "Tailwind CSS", icon: "/src/assets/svg-icons/tailwind.svg" },
+    { name: "Bootstrap", icon: "/src/assets/svg-icons/bootstrap.svg" },
+    { name: "React JS", icon: "/src/assets/svg-icons/react.svg" },
+    { name: "Next JS", icon: "/src/assets/svg-icons/nextjs.svg" },
+    { name: "Redux", icon: "/src/assets/svg-icons/redux.svg" },
+    { name: "Node JS", icon: "/src/assets/svg-icons/nodejs.svg" },
+    { name: "Express JS", icon: "/src/assets/svg-icons/express.svg" },
+    { name: "MongoDB", icon: "/src/assets/svg-icons/mongodb.svg" },
+    { name: "Mongoose", icon: "/src/assets/svg-icons/mongoose.svg" },
   ];
 
   const containerVariants = {
@@ -31,20 +45,25 @@ const Skills = () => {
   };
 
   return (
-    <section className="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white py-16 px-8">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold mb-2">My Skills</h2>
-        <p className="text-gray-400">
-          These are the tools I use to build modern web applications.
-        </p>
-      </div>
+    <section
+      ref={ref}
+      className="skills-section bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white py-16 px-8"
+    >
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"} // Trigger based on inView
+        className="text-center mb-12"
+      >
+        <h2 className="text-4xl font-bold mb-2 underline">My Skills</h2>
+      </motion.div>
 
       {/* Motion Container */}
       <motion.div
-        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        animate={inView ? "visible" : "hidden"} // Trigger based on inView
       >
         {skills.map((skill, index) => (
           <motion.div
@@ -54,12 +73,14 @@ const Skills = () => {
             // whileHover={{ scale: 1.1 }}
             whileHover={{
               boxShadow: "0px 10px 30px rgba(0,0,0,0.3)",
-              filter: "brightness(1.3)",
+              filter: "brightness(1.2)",
             }}
             whileTap={{ scale: 0.95 }}
           >
-            <Card className="h-20 flex items-center justify-center bg-gradient-to-t from-gray-800 via-gray-700 to-gray-600 text-center rounded-lg transition-transform duration-300 ease-in-out">
-              <div className="text-6xl mb-2">{skill.icon}</div>
+            <Card className="h-20 flex items-center justify-center gap-3 bg-gradient-to-t from-gray-800 via-gray-700 to-gray-600 text-center rounded-lg transition-transform duration-300 ease-in-out">
+              <div className="text-6xl mb-2">
+                <img src={skill.icon} alt="Icon" className="size-10" />
+              </div>
               <h3 className="text-xl font-semibold">{skill.name}</h3>
             </Card>
           </motion.div>
