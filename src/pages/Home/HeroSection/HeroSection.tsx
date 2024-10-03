@@ -41,7 +41,7 @@ const HeroSection = () => {
           <img
             src="/src/assets/profile.png"
             alt="Profile"
-            className="w-96 md:w-[484px] object-cover object-center rounded-full  border-red-500 border-[5px] "
+            className="w-96 md:w-[484px] object-cover object-center rounded-full  border-blue-500 border-[5px] "
           />
         </div>
       </div>

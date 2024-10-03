@@ -55,7 +55,7 @@ const Skills = () => {
         animate={inView ? "visible" : "hidden"} // Trigger based on inView
         className="text-center mb-12"
       >
-        <h2 className="text-4xl font-bold mb-2 underline">My Skills</h2>
+        <h2 className="text-4xl font-bold mb-2 overline">My Skills</h2>
       </motion.div>
 
       {/* Motion Container */}

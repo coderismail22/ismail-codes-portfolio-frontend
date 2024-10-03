@@ -1,17 +1,19 @@
+import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import HeroSection from "../HeroSection/HeroSection";
-// import Projects from "../Projects/Projects";
+import Projects from "../../Projects/Projects/Projects";
 import Services from "../Services/Services";
 import Skills from "../Skills/Skills";
 import Tools from "../Tools/Tools";
 import { Element } from "react-scroll";
+import ProjectsForHome from "../ProjectsForHome/ProjectsForHome";
 
 const Home = () => {
-  const darkStyle = {
-    backgroundColor: "#121212",
-    color: "#ffffff",
-    height: "100vh",
-    margin: "0",
-  };
+  // const darkStyle = {
+  //   backgroundColor: "#121212",
+  //   color: "#ffffff",
+  //   height: "100vh",
+  //   margin: "0",
+  // };
 
   return (
     <div
@@ -24,14 +26,15 @@ const Home = () => {
     // backgroundRepeat: "repeat-y",
     // }}
     >
-      <HeroSection />
+      {/* <HeroSection /> */}
+
+      {/* React Scroll Based Component */}
       <Element name="services">
         <Services />
       </Element>
-
-      {/* <Projects /> */}
-      <Skills />
-      <Tools />
+      {/* <Skills /> */}
+      {/* <Tools /> */}
+      <ProjectsForHome />
     </div>
   );
 };

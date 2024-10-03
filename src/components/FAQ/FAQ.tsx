@@ -8,7 +8,7 @@ import "./faq.css";
 
 const FAQ = () => {
   return (
-    <div className="flex flex-col items-center justify-center  py-5">
+    <div className="flex flex-col items-center justify-center  py-5 text-white">
       <h1 className="font-bold text-2xl uppercase font-mono mb-5">
         • Frequently Asked Questions
       </h1>
