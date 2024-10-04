@@ -3,6 +3,7 @@ import NotFound from "../pages/SharedPages/NotFound/NotFound";
 import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home/Home/Home";
 import Projects from "@/pages/Projects/Projects/Projects";
+import Blog from "@/pages/Blog/Blog/Blog";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
       {
         path: "/projects",
         element: <Projects />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
     ],
   },

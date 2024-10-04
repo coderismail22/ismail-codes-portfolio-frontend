@@ -1,4 +1,5 @@
 import { Typewriter } from "react-simple-typewriter";
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
 const HeroSection = () => {
   return (
@@ -38,11 +39,26 @@ const HeroSection = () => {
         </div>
         {/* Profile Image */}
         <div className="order-1 md:order-2 flex flex-col items-center justify-center">
-          <img
+          {/* <img
             src="/src/assets/profile.png"
             alt="Profile"
             className="w-96 md:w-[484px] object-cover object-center rounded-full  border-blue-500 border-[5px] "
-          />
+          /> */}
+          {/* <div className="w-96 h-96 rounded-full overflow-hidden border-blue-500 border-[5px] flex items-center justify-center">
+            <video
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              controls
+              controlsList="noremoteplayback"
+            >
+              <source src="/src/assets/bio.mp4" type="video/mp4" />
+            </video>
+          </div> */}
+
+          {/* Final */}
+          <VideoPlayer />
         </div>
       </div>
     </section>

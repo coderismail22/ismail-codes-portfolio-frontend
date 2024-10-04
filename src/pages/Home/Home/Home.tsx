@@ -26,14 +26,14 @@ const Home = () => {
     // backgroundRepeat: "repeat-y",
     // }}
     >
-      {/* <HeroSection /> */}
+      <HeroSection />
 
       {/* React Scroll Based Component */}
       <Element name="services">
         <Services />
       </Element>
-      {/* <Skills /> */}
-      {/* <Tools /> */}
+      <Skills />
+      <Tools />
       <ProjectsForHome />
     </div>
   );
