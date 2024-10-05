@@ -17,7 +17,7 @@ const VideoPlayer = () => {
         controls
         controlsList="nodownload noremoteplayback nofullscreen"
         loop
-        poster="/src/assets/profile.png"
+        poster="/src/assets/ic.gif"
       >
         <source src="/src/assets/bio.mp4" type="video/mp4" />
       </video>
