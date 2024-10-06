@@ -5,6 +5,9 @@ import Home from "../pages/Home/Home/Home";
 import Projects from "@/pages/Projects/Projects/Projects";
 import Blog from "@/pages/Blog/Blog/Blog";
 import BlogPostDetail from "@/pages/Blog/BlogPostDetails/BlogPostDetails";
+import Note from "@/pages/Note/Note/Note";
+import Notes from "@/pages/Note/Notes/Notes";
+import FullNote from "@/pages/Note/FullNote/FullNote";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +29,14 @@ export const router = createBrowserRouter([
       {
         path: "/blog/:id",
         element: <BlogPostDetail />,
+      },
+      {
+        path: "/notes",
+        element: <Notes />,
+      },
+      {
+        path: "/note/:id",
+        element: <FullNote />,
       },
     ],
   },

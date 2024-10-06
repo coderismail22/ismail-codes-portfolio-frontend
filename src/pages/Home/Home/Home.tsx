@@ -6,19 +6,22 @@ import Skills from "../Skills/Skills";
 import Tools from "../Tools/Tools";
 import { Element } from "react-scroll";
 import ProjectsForHome from "../ProjectsForHome/ProjectsForHome";
+import MarkdownEditor from "@/pages/Note/MarkdownEditor/MarkdownEditor";
 
 const Home = () => {
   return (
     <div>
-      <HeroSection />
+      {/* <MarkdownEditor /> */}
+
+      {/* <HeroSection /> */}
 
       {/* React Scroll Based Component */}
-      <Element name="services">
+      {/* <Element name="services">
         <Services />
-      </Element>
-      <Skills />
-      <Tools />
-      <ProjectsForHome />
+      </Element> */}
+      {/* <Skills /> */}
+      {/* <Tools /> */}
+      {/* <ProjectsForHome /> */}
     </div>
   );
 };
