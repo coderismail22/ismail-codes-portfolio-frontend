@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import MdEditor from "react-markdown-editor-lite";
 import "react-markdown-editor-lite/lib/index.css";
 import ReactMarkdown from "react-markdown";

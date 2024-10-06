@@ -143,7 +143,7 @@ const Notes = () => {
           {filteredNotes.slice(0, visibleNotes).map((note) => (
             <div
               key={note._id}
-              className="p-4 border border-gray-200 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:border-gray-300 bg-white "
+              className="p-4 border border-gray-200 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:border-gray-300 bg-slate-300 "
             >
               {/* Title */}
               <div className="text-lg md:text-xl font-semibold text-gray-800 mb-3">
@@ -160,7 +160,7 @@ const Notes = () => {
                   </div>
                 ) : (
                   <img
-                    className="w-full h-full object-cover rounded-lg shadow-md"
+                    className="w-full h-36 object-cover object-center rounded-lg shadow-md"
                     src={note.image}
                     alt="Note Cover Image"
                     onError={() => setImgError(true)}
