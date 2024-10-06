@@ -16,7 +16,7 @@ const FullNote = () => {
   const [note, setNote] = useState<TNote | null>(null); // TNote or null
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  // const [imgError, setImgError] = useState(false);
+  const [imgError, setImgError] = useState(false);
   const [markdownContent, setMarkdownContent] = useState<string>("");
 
   const fetchNoteDetail = async () => {
@@ -24,8 +24,6 @@ const FullNote = () => {
       const { data } = await axios.get(
         `http://localhost:5000/api/v1/note/${id}`
       ); // Fetch note by ID
-      console.log("raw data", data);
-      console.log("selected data", data.data);
       setNote(data.data); // Access data properly from the response
       setLoading(false);
     } catch (error) {
@@ -55,8 +53,13 @@ const FullNote = () => {
     );
   }
 
+  // Error Message
   if (error) {
-    return <p>{error}</p>;
+    return (
+      <p className="text-red-500 text-xl text-center font-bold py-10 border-2 border-red-500 rounded-md m-5">
+        {error}
+      </p>
+    );
   }
 
   return (
@@ -64,14 +67,14 @@ const FullNote = () => {
       {note ? (
         <div
           key={note._id}
-          className="p-4 border border-gray-200 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:border-gray-300 bg-white  "
+          className="p-4 border border-gray-200 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:border-gray-300 bg-[#2D2E2F]  "
         >
           {/* Title */}
-          <div className="text-lg md:text-xl font-semibold text-gray-800 mb-3">
+          <div className="text-lg md:text-xl font-semibold text-white  mb-3">
             {note.title}
           </div>
           {/* Image */}
-          {/* <div>
+          <div>
             {imgError ? (
               <div className="my-2 w-full h-full flex flex-col items-center justify-center bg-gray-200 border border-dashed border-gray-400 rounded-lg shadow-md">
                 <FaImage className="size-8 md:size-10 lg:size-20 mt-10" />
@@ -81,13 +84,13 @@ const FullNote = () => {
               </div>
             ) : (
               <img
-                className="w-full h-full object-cover rounded-lg shadow-md"
+                className="w-full h-80 object-cover mb-4 rounded-md"
                 src={note.image}
                 alt="Note Cover Image"
                 onError={() => setImgError(true)}
               />
             )}
-          </div> */}
+          </div>
 
           {/* Full Note Markdown Preview */}
 
@@ -107,11 +110,11 @@ const FullNote = () => {
             />
           </div>
           {/* Author */}
-          <p className="text-gray-500 text-sm">
+          <p className="text-white text-sm">
             <span className="font-bold">Author:</span> {note.author}
           </p>
           {/* Published */}
-          <p className="text-gray-500 text-sm">
+          <p className="text-white text-sm">
             <span className="font-bold">Published:</span>{" "}
             {moment(note.createdAt).format("YYYY-MM-DD")}
           </p>

@@ -46,8 +46,13 @@ const BlogPostDetail = () => {
     );
   }
 
+  // Error Message
   if (error) {
-    return <p>{error}</p>;
+    return (
+      <p className="text-red-500 text-xl text-center font-bold py-10 border-2 border-red-500 rounded-md m-5">
+        {error}
+      </p>
+    );
   }
 
   return (
