@@ -12,8 +12,7 @@ const navitems = [
   { title: "Services", path: "services", isScroll: true },
   { title: "Blog", path: "/blog", isScroll: false },
   { title: "Notes", path: "/notes", isScroll: false },
-  { title: "About", path: "about", isScroll: true },
-  { title: "Contact", path: "contact", isScroll: true },
+  { title: "Contact", path: "/contact", isScroll: false },
 ];
 
 const Navbar = () => {

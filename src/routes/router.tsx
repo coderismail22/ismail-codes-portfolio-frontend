@@ -8,6 +8,8 @@ import BlogPostDetail from "@/pages/Blog/BlogPostDetails/BlogPostDetails";
 import Note from "@/pages/Note/Note/Note";
 import Notes from "@/pages/Note/Notes/Notes";
 import FullNote from "@/pages/Note/FullNote/FullNote";
+import About from "@/pages/About/About/About";
+import Contact from "@/pages/Contact/Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "/note/:id",
         element: <FullNote />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
     ],
   },

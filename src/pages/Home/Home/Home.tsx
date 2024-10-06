@@ -11,17 +11,15 @@ import MarkdownEditor from "@/pages/Note/MarkdownEditor/MarkdownEditor";
 const Home = () => {
   return (
     <div>
-      {/* <MarkdownEditor /> */}
-
-      {/* <HeroSection /> */}
+      <HeroSection />
 
       {/* React Scroll Based Component */}
-      {/* <Element name="services">
+      <Element name="services">
         <Services />
-      </Element> */}
-      {/* <Skills /> */}
-      {/* <Tools /> */}
-      {/* <ProjectsForHome /> */}
+      </Element>
+      <Skills />
+      <Tools />
+      <ProjectsForHome />
     </div>
   );
 };
