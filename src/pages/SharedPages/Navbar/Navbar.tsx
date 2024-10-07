@@ -13,7 +13,6 @@ const navitems = [
   { title: "Blog", path: "/blog", isScroll: false },
   { title: "Notes", path: "/notes", isScroll: false },
   { title: "Contact", path: "contact", isScroll: true },
-  { title: "Login", path: "/login", isScroll: true },
 ];
 
 const Navbar = () => {
@@ -55,7 +54,7 @@ const Navbar = () => {
   };
 
   return (
-    <main className="mx-auto h-[70px] flex flex-col justify-between z-[9999] px-2 text-white bg-[#26283b]">
+    <main className="mx-auto h-[70px] flex flex-col justify-between z-[9999] px-5 text-white bg-[#26283b]">
       <nav className="flex justify-between items-center px-5">
         <div className="flex items-center justify-between lg:justify-center w-full">
           <div>
@@ -88,7 +87,7 @@ const Navbar = () => {
               <button
                 key={index}
                 onClick={() => handleScrollNavigation(item.path, item.path)} // Handle scroll navigation
-                className="hover:text-blue-400 hover:cursor-pointer hidden lg:inline-block font-montserrat font-bold text-center text-sm md:text-base w-[50px]"
+                className="hover:text-blue-500 hover:cursor-pointer hidden lg:inline-block font-montserrat font-bold text-center text-sm md:text-base w-[50px]"
               >
                 {item.title}
               </button>
@@ -96,7 +95,7 @@ const Navbar = () => {
               <Link
                 key={index}
                 to={item.path}
-                className="hover:text-blue-400 hover:cursor-pointer hidden lg:inline-block font-montserrat font-bold text-center text-sm md:text-base w-[50px]"
+                className="hover:text-blue-500 hover:cursor-pointer hidden lg:inline-block font-montserrat font-bold text-center text-sm md:text-base w-[50px]"
               >
                 {item.title}
               </Link>

@@ -12,7 +12,7 @@ const MainLayout = () => {
     // Simulate a delay for loading
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 2500);
 
     return () => clearTimeout(timer); // Cleanup
   }, []);

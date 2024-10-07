@@ -8,6 +8,8 @@ import BlogPostDetail from "@/pages/Blog/BlogPostDetails/BlogPostDetails";
 import Notes from "@/pages/Note/Notes/Notes";
 import FullNote from "@/pages/Note/FullNote/FullNote";
 import Contact from "@/pages/Contact/Contact/Contact";
+import MyDashboard from "@/pages/MyDashboard/MyDashboard/MyDashboard";
+import MyProfile from "@/pages/MyDashboard/MyProfile/MyProfile";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -40,6 +42,16 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+    ],
+  },
+  {
+    path: "/mysecretdashboard",
+    element: <MyDashboard />,
+    children: [
+      {
+        path: "my-profile",
+        element: <MyProfile />, // Wrap each admin route with ProtectedRoute
       },
     ],
   },
