@@ -44,7 +44,7 @@ const Tools = () => {
   return (
     <section
       ref={ref}
-      className="skills-section bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white py-16 px-8"
+      className=" skills-section bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white py-16 px-8"
     >
       <motion.div
         variants={containerVariants}
@@ -74,7 +74,7 @@ const Tools = () => {
             }}
             whileTap={{ scale: 0.95 }}
           >
-            <Card className="h-20 flex items-center justify-center gap-3 bg-gradient-to-t from-gray-800 via-gray-700 to-gray-600 text-center rounded-lg transition-transform duration-300 ease-in-out">
+            <Card className="text-white h-20 flex items-center justify-center gap-3 bg-gradient-to-t from-gray-800 via-gray-700 to-gray-600 text-center rounded-lg transition-transform duration-300 ease-in-out">
               <div className="text-6xl mb-2">
                 <img src={skill.icon} alt="Icon" className="size-10" />
               </div>
