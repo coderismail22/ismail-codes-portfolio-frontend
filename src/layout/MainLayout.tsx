@@ -12,13 +12,13 @@ const MainLayout = () => {
     // Simulate a delay for loading
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // Adjust the delay as needed (2 seconds in this case)
+    }, 3000);
 
     return () => clearTimeout(timer); // Cleanup
   }, []);
 
   if (loading) {
-    return <Loader />; // Show loader while the site is loading
+    return <Loader />;
   }
 
   return (

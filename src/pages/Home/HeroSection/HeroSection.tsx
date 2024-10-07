@@ -14,25 +14,37 @@ const HeroSection = () => {
   // Animation variants
   const textVariant = {
     hidden: { opacity: 0, y: -50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
   };
 
   const buttonVariant = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.5, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, delay: 0.5, ease: "easeOut" },
+    },
   };
 
   const videoVariant = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 1, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 1, ease: "easeOut" },
+    },
   };
 
   return (
     <section
-      className="my-5 flex items-center justify-center px-6 md:px-8"
+      className="h-screen flex items-center justify-center px-6 md:px-8"
       ref={ref} // Ref for triggering animations
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-8 ">
         {/* Hero Text */}
         <motion.div
           className="order-2 md:order-1 text-center items-center justify-center space-y-4"
