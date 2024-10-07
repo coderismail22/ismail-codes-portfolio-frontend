@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer bg-[#0F172A] text-gray-300  p-2 text-[16px] flex flex-col md:flex-row items-center justify-center gap-10">
+      <footer className="footer bg-[#0F172A] text-gray-300  p-2 text-[16px] flex flex-col md:flex-row items-center justify-center gap-2 md:gap-10">
         <div className="flex flex-col items-center justify-center">
-          <img src="/src/assets/ic.gif" alt="VisaPro" className="w-[150px] " />
+          <img src="/src/assets/ic.gif" alt="Ismail Codes" className="w-[100px]" />
 
         </div>
         <div className="flex flex-col items-center">

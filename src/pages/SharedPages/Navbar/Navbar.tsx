@@ -117,13 +117,15 @@ const Navbar = () => {
             {navitems.map((item, index) =>
               item.isScroll ? (
                 <button
-                  key={index}
-                  onClick={() => handleScrollNavigation(item.path, item.path)} // Handle scroll navigation for mobile
-                  className="font-bold flex flex-col items-center justify-center"
-                  onClick={closeSidebarWithDelay} // Close sidebar with delay
-                >
-                  {item.title}
-                </button>
+                key={index}
+                onClick={() => {
+                  closeSidebarWithDelay(); // Close the sidebar
+                  handleScrollNavigation(item.path, item.path); // Perform scroll navigation
+                }}
+                className="font-bold flex flex-col items-center justify-center"
+              >
+                {item.title}
+              </button>
               ) : (
                 <Link
                   key={index}

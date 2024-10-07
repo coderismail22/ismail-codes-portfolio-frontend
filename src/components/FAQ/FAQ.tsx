@@ -8,9 +8,9 @@ import "./faq.css";
 
 const FAQ = () => {
   return (
-    <div className="flex flex-col items-center justify-center  py-5 text-white">
-      <h1 className="font-bold text-2xl uppercase font-mono mb-5">
-        • Frequently Asked Questions
+    <div className="flex flex-col items-center justify-center  py-5 text-white px-5">
+      <h1 className="font-bold text-2xl uppercase font-mono mb-5 overline text-center">
+         Frequently Asked Questions
       </h1>
       <Accordion type="multiple" className="accordion">
         <AccordionItem value="item-1" className="accordion-item">

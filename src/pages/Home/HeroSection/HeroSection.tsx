@@ -1,13 +1,45 @@
 import { Typewriter } from "react-simple-typewriter";
+import { motion } from "framer-motion";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import { GrDocumentPdf } from "react-icons/gr";
+import { useInView } from "react-intersection-observer";
 
 const HeroSection = () => {
+  // Using Intersection Observer to trigger animations
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2, // Trigger when 20% of the section is visible
+  });
+
+  // Animation variants
+  const textVariant = {
+    hidden: { opacity: 0, y: -50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
+  const buttonVariant = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.5, ease: "easeOut" } },
+  };
+
+  const videoVariant = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 1, ease: "easeOut" } },
+  };
+
   return (
-    <section className="my-5 flex items-center justify-center px-4 md:px-8">
-      <div className="grid grid-cols-1 md:grid-cols-2  items-center justify-center gap-8">
+    <section
+      className="my-5 flex items-center justify-center px-6 md:px-8"
+      ref={ref} // Ref for triggering animations
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-8">
         {/* Hero Text */}
-        <div className="order-2 md:order-1 text-center items-center justify-center space-y-4 ">
+        <motion.div
+          className="order-2 md:order-1 text-center items-center justify-center space-y-4"
+          variants={textVariant}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+        >
           <h1 className="text-3xl md:text-5xl font-bold text-gray-400">
             Hi, It's Ismail
           </h1>
@@ -29,7 +61,11 @@ const HeroSection = () => {
               />
             </span>
           </p>
-          <div>
+          <motion.div
+            variants={buttonVariant}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+          >
             <a
               href="#"
               className="animate-bounce flex gap-2 items-center justify-center px-2 py-3 w-1/2 mx-auto mt-4 text-white bg-blue-600 rounded-full shadow hover:bg-blue-700 transition-all duration-1000"
@@ -37,31 +73,18 @@ const HeroSection = () => {
               My Resume
               <GrDocumentPdf />
             </a>
-          </div>
-        </div>
-        {/* Profile Image */}
-        <div className="order-1 md:order-2 flex flex-col items-center justify-center">
-          {/* <img
-            src="/src/assets/profile.png"
-            alt="Profile"
-            className="w-96 md:w-[484px] object-cover object-center rounded-full  border-blue-500 border-[5px] "
-          /> */}
-          {/* <div className="w-96 h-96 rounded-full overflow-hidden border-blue-500 border-[5px] flex items-center justify-center">
-            <video
-              className="w-full h-full object-cover"
-              autoPlay
-              muted 
-              loop
-              controls
-              controlsList="noremoteplayback"
-            >
-              <source src="/src/assets/bio.mp4" type="video/mp4" />
-            </video>
-          </div> */}
+          </motion.div>
+        </motion.div>
 
-          {/* Final */}
+        {/* Profile Image / Video */}
+        <motion.div
+          className="order-1 md:order-2 flex flex-col items-center justify-center"
+          variants={videoVariant}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+        >
           <VideoPlayer />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
