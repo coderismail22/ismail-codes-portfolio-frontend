@@ -10,14 +10,14 @@ const Home = () => {
   return (
     <div>
       <HeroSection />
+      <Skills />
+      <Tools />
+      <ProjectsForHome />
 
       {/* React Scroll Based Component */}
       <Element name="services">
         <Services />
       </Element>
-      <Skills />
-      <Tools />
-      <ProjectsForHome />
       {/* React Scroll Based Component */}
       <Element name="contact">
         <Contact />

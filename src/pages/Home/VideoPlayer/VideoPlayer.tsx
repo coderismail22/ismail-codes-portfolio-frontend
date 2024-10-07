@@ -16,14 +16,14 @@ const VideoPlayer = () => {
 
   return (
     <div
-      className="w-[380px] h-80 rounded-2xl overflow-hidden border-blue-500 border-[5px] flex items-center justify-center relative cursor-pointer"
+      className="w-[380px] h-80 rounded-2xl overflow-hidden border-blue-500  hover:border-stone-500 border-[5px] flex items-center justify-center relative cursor-pointer"
       onClick={handleContainerClick}
     >
       <video
         ref={videoRef}
         className="w-full h-full object-cover pointer-events-none" // Makes video ignore pointer events
         loop
-        poster="/src/assets/hero-video-poster.gif"
+        poster="/src/assets/poster-video.gif"
       >
         <source src="/src/assets/bio.mp4" type="video/mp4" />
       </video>

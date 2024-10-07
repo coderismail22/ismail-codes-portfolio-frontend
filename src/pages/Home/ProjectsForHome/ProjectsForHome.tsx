@@ -57,7 +57,6 @@ const ProjectsForHome = () => {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
     hover: {
-      scale: 1.01,
       transition: { duration: 0.3, type: "spring" },
     },
   };

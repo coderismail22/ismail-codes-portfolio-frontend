@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import ServicePackages from "@/components/ServicePackages/ServicePackages";
-import FAQ from "@/components/FAQ/FAQ";
+import Faq from "@/components/FAQ/Faq";
 
 const Services = () => {
   // Use the Intersection Observer hook
@@ -42,7 +42,7 @@ const Services = () => {
         transition={{ duration: 0.8, delay: 0.2, ease: "easeInOut" }}
       >
         <ServicePackages />
-        <FAQ />
+        <Faq />
       </motion.div>
     </motion.div>
   );
