@@ -1,36 +1,32 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 const VideoPlayer = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
 
-  const handlePlay = () => {
-    setIsPlaying(true);
-    videoRef.current?.play();
+  const handleContainerClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault(); // Prevents default behavior of controls
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play(); // Play the video if paused
+      } else {
+        videoRef.current.pause(); // Pause the video if playing
+      }
+    }
   };
 
   return (
-    <div className="w-96 h-96 rounded-full overflow-hidden border-blue-500 border-[5px] flex items-center justify-center relative">
+    <div
+      className="w-96 h-96 rounded-2xl overflow-hidden border-blue-500 border-[5px] flex items-center justify-center relative cursor-pointer"
+      onClick={handleContainerClick}
+    >
       <video
         ref={videoRef}
-        className="w-full h-full object-cover"
-        controls
-        controlsList="nodownload noremoteplayback nofullscreen"
+        className="w-full h-full object-cover pointer-events-none" // Makes video ignore pointer events
         loop
-        poster="/src/assets/ic.gif"
+        poster="/src/assets/hero-video-poster.gif"
       >
         <source src="/src/assets/bio.mp4" type="video/mp4" />
       </video>
-      {!isPlaying && (
-        <div
-          className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center cursor-pointer"
-          onClick={handlePlay}
-        >
-          <button className="text-2xl font-bold text-blue-400 uppercase overline animate-pulse">
-            Tap Here To Know Me👋🏻
-          </button>
-        </div>
-      )}
     </div>
   );
 };
