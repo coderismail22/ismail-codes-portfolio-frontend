@@ -96,7 +96,7 @@ const ProjectsForHome = () => {
   };
 
   return (
-    <>
+    <div className="h-screen">
       <motion.div initial="hidden" animate="visible">
         <h1 className="uppercase text-3xl lg:text-4xl text-center text-white font-bold my-8 overline">
           Latest Projects
@@ -118,7 +118,7 @@ const ProjectsForHome = () => {
           ))}
         </motion.div>
       )}
-    </>
+    </div>
   );
 };
 
