@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import ServicePackages from "@/components/ServicePackages/ServicePackages";
 import Faq from "@/components/FAQ/Faq";
+import { Element } from "react-scroll";
 
 const Services = () => {
   // Use the Intersection Observer hook
@@ -42,7 +43,9 @@ const Services = () => {
         transition={{ duration: 0.8, delay: 0.2, ease: "easeInOut" }}
       >
         <ServicePackages />
-        <Faq />
+        <Element name="faq">
+          <Faq />
+        </Element>
       </motion.div>
     </motion.div>
   );

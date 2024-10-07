@@ -10,6 +10,7 @@ const navitems = [
   { title: "Home", path: "/", isScroll: false },
   { title: "Projects", path: "/projects", isScroll: false },
   { title: "Services", path: "services", isScroll: true },
+  { title: "FAQ", path: "faq", isScroll: true },
   { title: "Blog", path: "/blog", isScroll: false },
   { title: "Notes", path: "/notes", isScroll: false },
   { title: "Contact", path: "contact", isScroll: true },
