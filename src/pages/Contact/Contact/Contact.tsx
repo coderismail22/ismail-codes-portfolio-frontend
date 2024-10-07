@@ -23,7 +23,10 @@ const Contact = () => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center py-20" ref={ref}>
+    <div
+      className="w-full h-full flex flex-col items-center justify-center py-20"
+      ref={ref}
+    >
       <motion.div
         className="w-full max-w-2xl"
         variants={animationVariants}

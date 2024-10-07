@@ -16,7 +16,7 @@ const VideoPlayer = () => {
 
   return (
     <div
-      className="w-[350px] h-80 rounded-2xl overflow-hidden border-blue-500 border-[5px] flex items-center justify-center relative cursor-pointer"
+      className="w-[380px] h-80 rounded-2xl overflow-hidden border-blue-500 border-[5px] flex items-center justify-center relative cursor-pointer"
       onClick={handleContainerClick}
     >
       <video

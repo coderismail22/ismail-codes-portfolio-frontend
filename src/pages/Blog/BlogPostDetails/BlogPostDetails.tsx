@@ -56,9 +56,9 @@ const BlogPostDetail = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="text-white container mx-auto px-4 py-8">
       {blogPost ? (
-        <div className="font-notoserifbangla mx-auto max-w-3xl">
+        <div className=" mx-auto max-w-3xl">
           <h1 className="text-4xl font-bold mb-4">{blogPost.title}</h1>
           {blogPost.image && (
             <img
@@ -68,10 +68,10 @@ const BlogPostDetail = () => {
             />
           )}
           <p dangerouslySetInnerHTML={{ __html: blogPost.body }}></p>
-          <p className="text-gray-500 text-sm mt-5">
+          <p className="text-sm mt-5 font-semibold">
             Author: {blogPost.author}
           </p>
-          <p className="text-gray-500 text-sm">
+          <p className="text-sm font-semibold">
             Published on: {new Date(blogPost.createdAt).toLocaleDateString()}
           </p>
           <div className="mt-4">

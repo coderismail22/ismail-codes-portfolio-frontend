@@ -41,7 +41,7 @@ const HeroSection = () => {
 
   return (
     <section
-      className="h-screen flex items-center justify-center px-6 md:px-8"
+      className="h-screen flex items-center justify-center px-2 md:px-8"
       ref={ref} // Ref for triggering animations
     >
       <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-8 ">
@@ -60,9 +60,10 @@ const HeroSection = () => {
             <span className="text-blue-400 font-semibold">
               <Typewriter
                 words={[
-                  "Passionate MERN Stack Developer",
+                  "Passionate",
+                  "MERN Stack Developer",
                   "UI/UX Enthusiast",
-                  "Content Maker",
+                  "Content Creator",
                 ]}
                 loop={false} // Set true to repeat the animation
                 cursor
@@ -90,7 +91,7 @@ const HeroSection = () => {
 
         {/* Profile Image / Video */}
         <motion.div
-          className="order-1 md:order-2 flex flex-col items-center justify-center"
+          className="order-1 md:order-2 flex flex-col items-center justify-center mt-5 md:mt-0"
           variants={videoVariant}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
