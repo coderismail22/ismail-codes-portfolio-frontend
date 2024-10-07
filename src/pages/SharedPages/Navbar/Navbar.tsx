@@ -55,7 +55,7 @@ const Navbar = () => {
 
   return (
     <main className="mx-auto h-[80px] flex flex-col justify-between z-[9999] px-2 text-white bg-[#26283b]">
-      <nav className="flex justify-between items-center py-2">
+      <nav className="flex justify-between items-center py-2 px-5">
         <div className="flex items-center justify-between lg:justify-center w-full">
           <div>
             <Link to="/">
@@ -117,15 +117,15 @@ const Navbar = () => {
             {navitems.map((item, index) =>
               item.isScroll ? (
                 <button
-                key={index}
-                onClick={() => {
-                  closeSidebarWithDelay(); // Close the sidebar
-                  handleScrollNavigation(item.path, item.path); // Perform scroll navigation
-                }}
-                className="font-bold flex flex-col items-center justify-center"
-              >
-                {item.title}
-              </button>
+                  key={index}
+                  onClick={() => {
+                    closeSidebarWithDelay(); // Close the sidebar
+                    handleScrollNavigation(item.path, item.path); // Perform scroll navigation
+                  }}
+                  className="font-bold flex flex-col items-center justify-center"
+                >
+                  {item.title}
+                </button>
               ) : (
                 <Link
                   key={index}
