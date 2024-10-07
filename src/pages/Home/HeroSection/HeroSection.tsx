@@ -4,7 +4,7 @@ import { GrDocumentPdf } from "react-icons/gr";
 
 const HeroSection = () => {
   return (
-    <section className="h-screen flex items-center justify-center px-4 md:px-8">
+    <section className="my-5 flex items-center justify-center px-4 md:px-8">
       <div className="grid grid-cols-1 md:grid-cols-2  items-center justify-center gap-8">
         {/* Hero Text */}
         <div className="order-2 md:order-1 text-center items-center justify-center space-y-4 ">
