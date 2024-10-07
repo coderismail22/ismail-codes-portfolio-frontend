@@ -10,6 +10,7 @@ import FullNote from "@/pages/Note/FullNote/FullNote";
 import Contact from "@/pages/Contact/Contact/Contact";
 import MyDashboard from "@/pages/MyDashboard/MyDashboard/MyDashboard";
 import MyProfile from "@/pages/MyDashboard/MyProfile/MyProfile";
+import PublishNewPost from "@/pages/MyDashboard/PublishNewPost/PublishNewPost";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
       {
         path: "my-profile",
         element: <MyProfile />, // Wrap each admin route with ProtectedRoute
+      },
+      {
+        path: "my-rich-text-editor",
+        element: <PublishNewPost />,
       },
     ],
   },
