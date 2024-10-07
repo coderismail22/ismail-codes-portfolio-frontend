@@ -1,21 +1,26 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import axios from "axios";
-import RichTextEditor from "../RichTextEditor/RichTextEditor.tsx";
-import ImageUpload from "../ImageUpload/ImageUpload.tsx"; // Assuming ImageUpload is in the ImageUpload folder
+import MdEditor from "react-markdown-editor-lite";
+import "react-markdown-editor-lite/lib/index.css";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
+import "highlight.js/styles/agate.css"; // For code block styling
+import "github-markdown-css/github-markdown.css"; // For markdown-body styling
 import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
 import Select from "react-select";
+import ImageUpload from "../ImageUpload/ImageUpload";
+import axios from "axios";
 
 const categoriesOptions = [
   { value: "html", label: "HTML" },
   { value: "css", label: "CSS" },
-  { value: "mongoose", label: "Mongoose" },
   { value: "react", label: "React" },
   { value: "javascript", label: "JavaScript" },
-  // Add more categories here as needed
+  // Add more categories as needed
 ];
 
-const PublishNewPost = () => {
+const MyMarkdownEditor = () => {
   const {
     register,
     handleSubmit,
@@ -23,32 +28,27 @@ const PublishNewPost = () => {
     reset,
     watch,
   } = useForm();
-  const title = watch("title", "");
-  const [content, setContent] = useState("");
-  const [uploadedImageUrl, setUploadedImageUrl] = useState("");
+  const [uploadedImageUrl, setUploadedImageUrl] = useState<string>("");
+  const [markdownContent, setMarkdownContent] = useState<string>("");
   const [selectedCategories, setSelectedCategories] = useState([]);
 
-  console.log(selectedCategories);
-
-  // Handle Category Change
-  const handleCategoriesChange = (selectedOptions) => {
-    setSelectedCategories(selectedOptions || []); // Ensure it's an empty array when no categories are selected
+  // Handle content change for markdown
+  const handleEditorChange = ({ text }: { text: string }) => {
+    setMarkdownContent(text);
   };
 
-  // Handle content change
-  const handleContentChange = (newContent) => {
-    setContent(newContent); // Update the state in the parent
+  // Handle category change
+  const handleCategoriesChange = (selectedOptions: any) => {
+    setSelectedCategories(selectedOptions);
   };
-
   const onSubmit = async (data) => {
     const postData = {
       ...data,
-      content,
+      markdownContent,
       imgUrl: uploadedImageUrl,
       categories: selectedCategories.map((cat) => cat.value), // Convert categories to array of values
     };
     console.log("postData", postData);
-    // EXTRACT DATA AND CONVERT TO PROPER POST FORMAT
     try {
       // TODO: Add Server Url
       const res = await axios.post(
@@ -69,11 +69,11 @@ const PublishNewPost = () => {
   };
 
   return (
-    <div className="mx-10 my-8 ">
-      <h1 className="text-2xl font-semibold mb-6 text-center">
-        Publish A New Post
+    <div className="mx-4 my-8 border p-2">
+      <h1 className="text-2xl font-semibold mb-6 mt-5 text-center">
+        Publish a New Note
       </h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 border p-2">
+      <form onSubmit={handleSubmit(onSubmit)}>
         {/* Title */}
         <div>
           <label className="block font-medium">Title</label>
@@ -87,81 +87,61 @@ const PublishNewPost = () => {
           )}
         </div>
 
-        {/* Category Selection */}
+        {/* Categories */}
         <div>
           <label className="block font-medium">Category</label>
           <Select
-            isMulti
             options={categoriesOptions}
+            isMulti
             value={selectedCategories}
             onChange={handleCategoriesChange}
-            className="basic-multi-select"
-            classNamePrefix="select"
-            placeholder="Select Categories"
           />
           {selectedCategories.length === 0 && (
             <p className="text-red-500 text-sm">
-              At least one category is required
+              Please select at least one category
             </p>
           )}
         </div>
 
         {/* Image Upload Section */}
-        <div>
-          <label className="block font-medium">Upload Cover Image</label>
+        <div className="mt-5">
+          <label className="block font-medium ">Upload Cover Image</label>
           <ImageUpload setUploadedImageUrl={setUploadedImageUrl} />
           {uploadedImageUrl === "" && (
             <p className="text-red-500 text-sm">Image is required</p>
           )}
         </div>
 
-        <div>
-          <label className="block font-medium">Content</label>
-          <RichTextEditor
-            content={content}
-            onChangeContent={handleContentChange}
-          />
-        </div>
+        {/* Markdown Editor */}
+        <h1 className="text-left uppercase font-semibold mt-5">
+          Make Markdown Note :
+        </h1>
+        <MdEditor
+          className="bg-red-500"
+          value={markdownContent}
+          style={{ height: "500px" }}
+          renderHTML={(text) => (
+            <ReactMarkdown
+              children={text}
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeHighlight]}
+            />
+          )}
+          onChange={handleEditorChange}
+        />
 
         {/* Make Publish Post Button Conditional */}
-        <div className="flex justify-center">
+        <div className="flex justify-center items-center mt-5">
           <button
             type="submit"
             className="bg-black text-white px-4 py-2 rounded font-semibold hover:bg-gray-800 transition"
           >
-            Publish Post
+            Publish Note
           </button>
         </div>
       </form>
-
-      {/* Preview Section */}
-      {content && (
-        <div className="mt-8">
-          <h2 className="text-xl font-semibold mb-4">Preview Content</h2>
-          <div className="border border-gray-300 p-4 md:p-8 rounded w-full max-w-full overflow-hidden">
-            {title ? (
-              <h1 className="text-lg md:text-xl font-semibold text-gray-800 mb-3 break-words">
-                {title}
-              </h1>
-            ) : null}
-
-            {uploadedImageUrl ? (
-              <img
-                src={uploadedImageUrl}
-                alt="Uploaded Preview"
-                className="w-full max-w-full h-auto object-cover mb-4 rounded"
-              />
-            ) : null}
-
-            <div
-              className="text-gray-700 break-words"
-              dangerouslySetInnerHTML={{ __html: content }}
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 };
 
-export default PublishNewPost;
+export default MyMarkdownEditor;

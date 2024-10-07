@@ -11,6 +11,7 @@ import Contact from "@/pages/Contact/Contact/Contact";
 import MyDashboard from "@/pages/MyDashboard/MyDashboard/MyDashboard";
 import MyProfile from "@/pages/MyDashboard/MyProfile/MyProfile";
 import PublishNewPost from "@/pages/MyDashboard/PublishNewPost/PublishNewPost";
+import MyMarkdownEditor from "@/pages/MyDashboard/MyMarkdownEditor/MyMarkdownEditor";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
       {
         path: "my-rich-text-editor",
         element: <PublishNewPost />,
+      },
+      {
+        path: "my-markdown-editor",
+        element: <MyMarkdownEditor />,
       },
     ],
   },
