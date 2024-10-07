@@ -2,7 +2,6 @@ import clsx from "clsx";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { scroller } from "react-scroll"; // Add scroller from react-scroll
-
 import { FaBars } from "react-icons/fa";
 import { TbLayoutSidebarLeftCollapse } from "react-icons/tb";
 
@@ -14,6 +13,7 @@ const navitems = [
   { title: "Blog", path: "/blog", isScroll: false },
   { title: "Notes", path: "/notes", isScroll: false },
   { title: "Contact", path: "contact", isScroll: true },
+  { title: "Login", path: "/login", isScroll: true },
 ];
 
 const Navbar = () => {
@@ -55,15 +55,16 @@ const Navbar = () => {
   };
 
   return (
-    <main className="mx-auto h-[80px] flex flex-col justify-between z-[9999] px-2 text-white bg-[#26283b]">
-      <nav className="flex justify-between items-center py-2 px-5">
+    <main className="mx-auto h-[70px] flex flex-col justify-between z-[9999] px-2 text-white bg-[#26283b]">
+      <nav className="flex justify-between items-center px-5">
         <div className="flex items-center justify-between lg:justify-center w-full">
           <div>
             <Link to="/">
               {/* LOGO */}
               <img
                 src="/src/assets/ic.gif"
-                width={"120px"}
+                // width={"120px"}
+                className="w-[120px] h-full"
                 alt="Ismail Codes Logo"
               />
             </Link>
@@ -80,14 +81,14 @@ const Navbar = () => {
           </section>
         </div>
 
-        <section className="flex items-center justify-center gap-2 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-10 text-center">
+        <section className="flex items-center justify-center gap-10 xl:gap-16 2xl:gap-20 text-center">
           {/* Navbar For Larger Displays */}
           {navitems.map((item, index) =>
             item.isScroll ? (
               <button
                 key={index}
                 onClick={() => handleScrollNavigation(item.path, item.path)} // Handle scroll navigation
-                className="hover:text-blue-400 hover:cursor-pointer hidden lg:inline-block font-montserrat font-bold text-center text-sm md:text-base w-[50px] lg:w-[80px] 2xl:w-[100px]"
+                className="hover:text-blue-400 hover:cursor-pointer hidden lg:inline-block font-montserrat font-bold text-center text-sm md:text-base w-[50px]"
               >
                 {item.title}
               </button>
@@ -95,7 +96,7 @@ const Navbar = () => {
               <Link
                 key={index}
                 to={item.path}
-                className="hover:text-blue-400 hover:cursor-pointer hidden lg:inline-block font-montserrat font-bold text-center text-sm md:text-base w-[50px] lg:w-[80px] 2xl:w-[100px]"
+                className="hover:text-blue-400 hover:cursor-pointer hidden lg:inline-block font-montserrat font-bold text-center text-sm md:text-base w-[50px]"
               >
                 {item.title}
               </Link>
