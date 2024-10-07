@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer bg-[#0F172A] text-gray-300  p-10 text-[16px] flex flex-col md:flex-row items-center justify-center gap-10">
+      <footer className="footer bg-[#0F172A] text-gray-300  p-2 text-[16px] flex flex-col md:flex-row items-center justify-center gap-10">
         <div className="flex flex-col items-center justify-center">
           <img src="/src/assets/ic.gif" alt="VisaPro" className="w-[150px] " />
 
@@ -34,7 +34,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <footer className="footer footer-center bg-white rounded px-10 py-4">
+      <footer className="footer footer-center bg-[#26283b] text-white rounded px-10 py-1">
         <div>
           <p className="text-[16px] uppercase text-center font-semibold">
              Copyright © {new Date().getFullYear()} Ismail Codes</p>

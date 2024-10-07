@@ -1,12 +1,10 @@
-import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import HeroSection from "../HeroSection/HeroSection";
-import Projects from "../../Projects/Projects/Projects";
 import Services from "../Services/Services";
 import Skills from "../Skills/Skills";
 import Tools from "../Tools/Tools";
 import { Element } from "react-scroll";
 import ProjectsForHome from "../ProjectsForHome/ProjectsForHome";
-import MarkdownEditor from "@/pages/Note/MarkdownEditor/MarkdownEditor";
+import Contact from "@/pages/Contact/Contact/Contact";
 
 const Home = () => {
   return (
@@ -20,6 +18,10 @@ const Home = () => {
       <Skills />
       <Tools />
       <ProjectsForHome />
+      {/* React Scroll Based Component */}
+      <Element name="contact">
+        <Contact />
+      </Element>
     </div>
   );
 };

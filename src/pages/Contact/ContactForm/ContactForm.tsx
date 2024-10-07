@@ -105,12 +105,12 @@ const ContactForm = () => {
 
 
     return (
-        <div className="w-full flex flex-col items-center justify-center mx-auto mb-20  px-6">
+        <div className="max-w-2xl flex flex-col items-center justify-center mx-auto mb-20  px-6">
             <h1 className="font-yeseva font-bold text-[28px] text-center uppercase mt-8 text-white">
                 Want to have a meeting
 
             </h1>
-            <h1 className="font-yeseva font-bold text-[35px] mb-10 text-center uppercase text-blue-500">
+            <h1 className="font-yeseva font-bold text-[25px] md:text-[35px] mb-10 text-center uppercase text-blue-500">
                 Send a message
             </h1>
 

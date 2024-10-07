@@ -12,7 +12,7 @@ const navitems = [
   { title: "Services", path: "services", isScroll: true },
   { title: "Blog", path: "/blog", isScroll: false },
   { title: "Notes", path: "/notes", isScroll: false },
-  { title: "Contact", path: "/contact", isScroll: false },
+  { title: "Contact", path: "contact", isScroll: true },
 ];
 
 const Navbar = () => {
