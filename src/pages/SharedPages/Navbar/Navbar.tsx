@@ -61,7 +61,11 @@ const Navbar = () => {
           <div>
             <Link to="/">
               {/* LOGO */}
-              <img src="/src/assets/ic.gif" width={"120px"} alt="Logo" />
+              <img
+                src="/src/assets/ic.gif"
+                width={"120px"}
+                alt="Ismail Codes Logo"
+              />
             </Link>
           </div>
 
@@ -83,7 +87,7 @@ const Navbar = () => {
               <button
                 key={index}
                 onClick={() => handleScrollNavigation(item.path, item.path)} // Handle scroll navigation
-                className="hover:text-[#456C2F] hover:cursor-pointer hidden lg:inline-block font-montserrat font-bold text-center text-sm md:text-base w-[50px] lg:w-[60px] 2xl:w-[100px]"
+                className="hover:text-blue-400 hover:cursor-pointer hidden lg:inline-block font-montserrat font-bold text-center text-sm md:text-base w-[50px] lg:w-[80px] 2xl:w-[100px]"
               >
                 {item.title}
               </button>
@@ -91,7 +95,7 @@ const Navbar = () => {
               <Link
                 key={index}
                 to={item.path}
-                className="hover:text-[#456C2F] hover:cursor-pointer hidden lg:inline-block font-montserrat font-bold text-center text-sm md:text-base w-[50px] lg:w-[60px] 2xl:w-[100px]"
+                className="hover:text-blue-400 hover:cursor-pointer hidden lg:inline-block font-montserrat font-bold text-center text-sm md:text-base w-[50px] lg:w-[80px] 2xl:w-[100px]"
               >
                 {item.title}
               </Link>
