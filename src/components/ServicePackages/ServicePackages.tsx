@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const ServicePackages = () => {
   return (
-    <div className="relative flex flex-col  h-full w-full p-4">
+    <div className="relative flex flex-col  h-full w-full py-7 px-5">
       <Tabs
         defaultValue="fullstack"
         className="w-full flex flex-col justify-center items-center ease-in"
