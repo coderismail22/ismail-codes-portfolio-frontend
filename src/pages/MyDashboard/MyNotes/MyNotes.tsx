@@ -3,15 +3,14 @@ import { MdDeleteOutline, MdEdit } from "react-icons/md";
 import { useState, useEffect, useCallback } from "react";
 import Swal from "sweetalert2";
 import { RotatingLines } from "react-loader-spinner";
-import NoteEditModal from "../NoteEditModal/NoteEditModal"; // Import the modal component
+import NoteEditModal from "../NoteEditModal/NoteEditModal";
 import moment from "moment";
-import debounce from "lodash.debounce"; // Debouncing utility
-import DatePicker from "react-datepicker"; // Datepicker for filtering dates
-import "react-datepicker/dist/react-datepicker.css"; // Datepicker styles
+import debounce from "lodash.debounce";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { BsCalendar } from "react-icons/bs";
 import { FaImage, FaSearch } from "react-icons/fa";
 
-// Type definition for a single note
 export interface Note {
   _id: string;
   title: string;
@@ -23,17 +22,18 @@ export interface Note {
 }
 
 const MyNotes = () => {
-  const [notes, setNotes] = useState<Note[]>([]); // Use Note type
+  const [notes, setNotes] = useState<Note[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [visibleNotes, setVisibleNotes] = useState(6); // Initial 6 visible notes
-  const [selectedNote, setSelectedNote] = useState<Note | null>(null); // Use Note type
+  const [visibleNotes, setVisibleNotes] = useState(6);
+  const [selectedNote, setSelectedNote] = useState<Note | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
-  const [imgError, setImgError] = useState(false);
+  const [imgErrors, setImgErrors] = useState<{ [key: string]: boolean }>({});
 
+  // Fetch notes from API
   const fetchNotes = async () => {
     setLoading(true);
     try {
@@ -52,12 +52,10 @@ const MyNotes = () => {
     fetchNotes();
   }, []);
 
-  // Load More Button Handler
   const loadMoreNotes = () => {
-    setVisibleNotes((prevVisibleNotes) => prevVisibleNotes + 6); // Load 6 more notes
+    setVisibleNotes((prevVisibleNotes) => prevVisibleNotes + 6);
   };
 
-  // Delete Button Handler
   const deleteNote = async (id: string) => {
     try {
       const result = await Swal.fire({
@@ -81,24 +79,20 @@ const MyNotes = () => {
     }
   };
 
-  // Open Modal For Updating Note
   const openEditModal = (note: Note) => {
     setSelectedNote(note);
     setIsModalOpen(true);
   };
 
-  // Modal Close Handler
   const handleModalClose = () => {
     setIsModalOpen(false);
     setSelectedNote(null);
   };
 
-  // Refresh on update
   const handleNoteUpdate = () => {
-    fetchNotes(); // Refresh the list when a note is updated
+    fetchNotes();
   };
 
-  // Debounced Search Handler
   const debouncedSearch = useCallback(
     debounce((query: string) => setSearchQuery(query), 300),
     []
@@ -108,7 +102,13 @@ const MyNotes = () => {
     debouncedSearch(e.target.value);
   };
 
-  // Filter Notes Based on Search Query and Date Range
+  const handleImageError = (id: string) => {
+    setImgErrors((prevErrors) => ({
+      ...prevErrors,
+      [id]: true,
+    }));
+  };
+
   const filteredNotes = notes.filter((note) => {
     const matchesSearch =
       note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -122,7 +122,6 @@ const MyNotes = () => {
     return matchesSearch && matchesDateRange;
   });
 
-  // Loading Spinner
   if (loading) {
     return (
       <div className="h-screen flex items-center justify-center">
@@ -139,7 +138,6 @@ const MyNotes = () => {
     );
   }
 
-  // Error Message
   if (error) {
     return (
       <p className="text-red-500 text-xl text-center font-bold py-10 border-2 border-red-500 rounded-md m-5">
@@ -151,7 +149,6 @@ const MyNotes = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row gap-4 justify-between items-center mb-8">
-        {/* Search Bar */}
         <div className="relative w-full md:w-1/2">
           <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
           <input
@@ -162,7 +159,6 @@ const MyNotes = () => {
           />
         </div>
 
-        {/* Date Filters */}
         <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
           <div className="relative w-full md:w-auto">
             <DatePicker
@@ -196,16 +192,15 @@ const MyNotes = () => {
               key={note._id}
               className="p-4 border border-gray-200 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:border-gray-300 bg-white"
             >
-              {/* Title */}
               <div className="text-lg md:text-xl font-semibold text-gray-800 mb-3">
                 {note.title}
               </div>
 
               <div>
-                {imgError ? (
+                {imgErrors[note._id] ? (
                   <div className="my-2 w-full h-full flex flex-col items-center justify-center bg-gray-200 border border-dashed border-gray-400 rounded-lg shadow-md">
                     <FaImage className="size-8 md:size-10 lg:size-20 mt-10" />
-                    <p className="text-2xl text-gray-500 text-center font-medium p-10 ">
+                    <p className="text-2xl text-gray-500 text-center font-medium p-10">
                       Image Not Available
                     </p>
                   </div>
@@ -214,26 +209,21 @@ const MyNotes = () => {
                     className="w-full h-36 object-cover object-center rounded-lg shadow-md"
                     src={note.image}
                     alt="Note Cover Image"
-                    onError={() => setImgError(true)}
+                    onError={() => handleImageError(note._id)}
                   />
                 )}
               </div>
 
-              {/* Author */}
               <p className="text-gray-500 text-sm mt-2">
                 <span className="font-bold">Author:</span> {note.author}
               </p>
-              {/* Date */}
               <p className="text-gray-500 text-sm">
                 <span className="font-bold">Published:</span>{" "}
                 {moment(note.createdAt).format("YYYY-MM-DD")}
               </p>
-              {/* Tags */}
-              <p className="text-gray-500 text-sm">
-                {/* <span className="font-bold">Tags:</span> {note.tags.join(", ")} */}
-              </p>
+
               <hr className="my-4" />
-              {/* Edit and Delete Button */}
+
               <div className="flex justify-center space-x-5">
                 <MdDeleteOutline
                   className="text-red-500 hover:text-red-700 text-2xl cursor-pointer transition-all duration-200"
@@ -252,10 +242,10 @@ const MyNotes = () => {
       {visibleNotes < filteredNotes.length && (
         <div className="flex justify-center mt-8">
           <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
             onClick={loadMoreNotes}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-all duration-300"
           >
-            Load More Notes
+            Load More
           </button>
         </div>
       )}
@@ -263,8 +253,8 @@ const MyNotes = () => {
       {isModalOpen && selectedNote && (
         <NoteEditModal
           isOpen={isModalOpen}
-          note={selectedNote}
           onClose={handleModalClose}
+          note={selectedNote}
           onUpdate={handleNoteUpdate}
         />
       )}

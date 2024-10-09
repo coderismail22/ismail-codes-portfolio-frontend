@@ -24,6 +24,7 @@ const NoteEditModal = ({ isOpen, onClose, note, onUpdate }) => {
   const handleUpdate = async () => {
     const updatedNoteData = {
       title,
+      image:uploadedImageUrl,
       body: markdownContent,
     };
 
@@ -37,6 +38,7 @@ const NoteEditModal = ({ isOpen, onClose, note, onUpdate }) => {
       onUpdate(); // Notify parent of the update
       onClose(); // Close the modal
     } catch (error) {
+      console.log(error)
       Swal.fire("Error!", "Failed to update note.", "error");
     }
   };
