@@ -21,7 +21,7 @@ const Notes = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
-  const [imgError, setImgError] = useState(false);
+  const [imgErrors, setImgErrors] = useState<{ [key: string]: boolean }>({}); // Track image errors per note ID
 
   // Fetch Notes
   const fetchNotes = async () => {
@@ -70,6 +70,14 @@ const Notes = () => {
 
     return matchesSearch && matchesDateRange;
   });
+
+  // Handle image load error
+  const handleImageError = (id: string) => {
+    setImgErrors((prevErrors) => ({
+      ...prevErrors,
+      [id]: true,
+    }));
+  };
 
   // Loading Spinner
   if (loading) {
@@ -151,7 +159,7 @@ const Notes = () => {
               </div>
               {/* Image */}
               <div>
-                {imgError ? (
+                {imgErrors[note._id] ? (
                   <div className="my-2 w-full h-full flex flex-col items-center justify-center bg-gray-200 border border-dashed border-gray-400 rounded-lg shadow-md">
                     <FaImage className="size-8 md:size-10 lg:size-20 mt-10" />
                     <p className="text-2xl text-gray-500 text-center font-medium p-10 ">
@@ -163,7 +171,7 @@ const Notes = () => {
                     className="w-full h-36 object-cover object-center rounded-lg shadow-md"
                     src={note.image}
                     alt="Note Cover Image"
-                    onError={() => setImgError(true)}
+                    onError={() => handleImageError(note._id)}
                   />
                 )}
               </div>
