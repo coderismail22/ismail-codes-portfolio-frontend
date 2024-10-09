@@ -71,7 +71,7 @@ const MyMarkdownEditor = () => {
   };
 
   return (
-    <div className="mx-4 my-8 border p-2">
+    <div className="mx-4 my-8 border rounded-md p-2">
       <h1 className="text-2xl font-semibold mb-6 mt-5 text-center text-white">
         Publish a New Note
       </h1>

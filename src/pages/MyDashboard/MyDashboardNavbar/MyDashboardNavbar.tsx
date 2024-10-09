@@ -9,7 +9,7 @@ const navitems = [
   { title: "Blog Editor", path: "my-rich-text-editor" },
   { title: "Markdown Editor", path: "my-markdown-editor" },
   { title: "Posts", path: "my-blog-posts" },
-  { title: "Notes", path: "my-notes-list" },
+  { title: "Notes", path: "my-notes" },
 ];
 
 const MyDashboardNavbar = () => {

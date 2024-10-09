@@ -13,6 +13,7 @@ import MyProfile from "@/pages/MyDashboard/MyProfile/MyProfile";
 import PublishNewPost from "@/pages/MyDashboard/PublishNewPost/PublishNewPost";
 import MyMarkdownEditor from "@/pages/MyDashboard/MyMarkdownEditor/MyMarkdownEditor";
 import MyBlogPosts from "@/pages/MyDashboard/MyBlogPosts/MyBlogPosts";
+import MyNotes from "@/pages/MyDashboard/MyNotes/MyNotes";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -69,8 +70,12 @@ export const router = createBrowserRouter([
         element: <MyBlogPosts />,
       },
       {
-        path: "my-markdown-notes",
+        path: "my-markdown-editor",
         element: <MyMarkdownEditor />,
+      },
+      {
+        path: "my-notes",
+        element: <MyNotes />,
       },
     ],
   },

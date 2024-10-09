@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
+import { RotatingLines } from "react-loader-spinner";
 
 const MyProfile = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -77,8 +78,21 @@ const MyProfile = () => {
     }
   };
 
+  // Loading Spinner
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <RotatingLines
+          visible={true}
+          height="46"
+          width="46"
+          color="grey"
+          strokeWidth="5"
+          animationDuration="0.75"
+          ariaLabel="rotating-lines-loading"
+        />
+      </div>
+    );
   }
 
   //   if (!isAuthenticated) {
