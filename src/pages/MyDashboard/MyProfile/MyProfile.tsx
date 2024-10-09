@@ -86,7 +86,7 @@ const MyProfile = () => {
   //   }
 
   return (
-    <div className="h-[80vh] flex flex-col items-center justify-center gap-5 overflow-hidden">
+    <div className="h-screen flex flex-col items-center justify-center gap-5 overflow-hidden">
       <h1 className="sm:text-2xl md:text-4xl lg:text-5xl uppercase text-blue-500">
         Welcome
       </h1>
