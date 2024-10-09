@@ -41,24 +41,26 @@ const MyMarkdownEditor = () => {
   const handleCategoriesChange = (selectedOptions: any) => {
     setSelectedCategories(selectedOptions);
   };
+
   const onSubmit = async (data) => {
-    const postData = {
-      ...data,
-      markdownContent,
-      imgUrl: uploadedImageUrl,
-      categories: selectedCategories.map((cat) => cat.value), // Convert categories to array of values
+    const noteData = {
+      title: data?.title,
+      author: "Ismail",
+      image: uploadedImageUrl,
+      body: markdownContent,
+      category: selectedCategories.map((cat) => cat.value),
     };
-    console.log("postData", postData);
+    console.log(noteData);
     try {
       // TODO: Add Server Url
       const res = await axios.post(
-        "https://fsdg-latest-v2.vercel.app/api/change-url-posts",
-        postData,
+        "http://localhost:5000/api/v1/note",
+        noteData,
         { headers: { "Content-Type": "application/json" } }
       );
       console.log("Post created:", res.data);
       reset(); // Reset the form after submission
-      setContent(""); // Clear the content editor
+      setMarkdownContent(""); // Clear the content editor
       setUploadedImageUrl(""); // Clear the uploaded image URL
       setSelectedCategories([]); // Clear the selected categories
       Swal.fire("Success!", "Posted successfully.", "success");
@@ -70,16 +72,16 @@ const MyMarkdownEditor = () => {
 
   return (
     <div className="mx-4 my-8 border p-2">
-      <h1 className="text-2xl font-semibold mb-6 mt-5 text-center">
+      <h1 className="text-2xl font-semibold mb-6 mt-5 text-center text-white">
         Publish a New Note
       </h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* Title */}
         <div>
-          <label className="block font-medium">Title</label>
+          <label className="block font-medium text-white ">Title</label>
           <input
             type="text"
-            className="w-full border border-gray-300 rounded p-2"
+            className="w-full border border-gray-300 rounded p-2 text-white"
             {...register("title", { required: "Title is required" })}
           />
           {errors.title && (
@@ -89,7 +91,7 @@ const MyMarkdownEditor = () => {
 
         {/* Categories */}
         <div>
-          <label className="block font-medium">Category</label>
+          <label className="block font-medium text-white">Category</label>
           <Select
             options={categoriesOptions}
             isMulti
@@ -104,7 +106,7 @@ const MyMarkdownEditor = () => {
         </div>
 
         {/* Image Upload Section */}
-        <div className="mt-5">
+        <div className="mt-5 text-white">
           <label className="block font-medium ">Upload Cover Image</label>
           <ImageUpload setUploadedImageUrl={setUploadedImageUrl} />
           {uploadedImageUrl === "" && (
@@ -113,11 +115,11 @@ const MyMarkdownEditor = () => {
         </div>
 
         {/* Markdown Editor */}
-        <h1 className="text-left uppercase font-semibold mt-5">
+        <h1 className="text-left uppercase font-semibold mt-5 text-white">
           Make Markdown Note :
         </h1>
         <MdEditor
-          className="bg-red-500"
+          className="bg-gray-900"
           value={markdownContent}
           style={{ height: "500px" }}
           renderHTML={(text) => (

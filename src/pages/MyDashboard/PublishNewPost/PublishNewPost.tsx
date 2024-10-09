@@ -40,12 +40,6 @@ const PublishNewPost = () => {
   };
 
   const onSubmit = async (data) => {
-    // const postData2 = {
-    //   ...data,
-    //   content,
-    //   imgUrl: uploadedImageUrl,
-    //   categories: selectedCategories.map((cat) => cat.value), // Convert categories to array of values
-    // };
     const postData = {
       title: title,
       author: "Ismail",
@@ -81,7 +75,7 @@ const PublishNewPost = () => {
       </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-4 border rounded-md p-5 mb-10"
+        className="h-full space-y-4 border rounded-md p-5 mb-10"
       >
         {/* Title */}
         <div>
