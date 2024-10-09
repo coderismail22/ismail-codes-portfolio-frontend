@@ -7,45 +7,33 @@ import RichTextEditor from "../RichTextEditor/RichTextEditor";
 
 const PostEditModal = ({ isOpen, onClose, post, onPostUpdate }) => {
   const [title, setTitle] = useState(post.title || "");
-  const [label, setLabel] = useState(post.label || "");
-  const [author, setAuthor] = useState(post.author || "");
-  const [content, setContent] = useState(post.content || "");
+  const [body, setBody] = useState(post.body || "");
   const [uploadedImageUrl, setUploadedImageUrl] = useState(post.imgUrl || "");
 
   //child to parent state lifting
   const handleContentChange = (newContent) => {
-    setContent(newContent); // Update the state in the parent
+    setBody(newContent); // Update the state in the parent
   };
 
   const editorRef = useRef(null);
 
   useEffect(() => {
     setTitle(post.title || "");
-    setLabel(post.label || "");
-    setContent(post.content || "");
-    setAuthor(post.author || "");
-    // setImgUrl(post.imgUrl || '');
-    setUploadedImageUrl(post.imgUrl || "");
+    setBody(post.body || "");
+    setUploadedImageUrl(post.image || "");
   }, [post]);
 
   const handleUpdate = async () => {
-    console.log("title", title); // Getting Latest
-    console.log("label", label); // Getting Latest
-    console.log("author", author); // Getting Latest
-    console.log("content check check", content); // Getting Latest
-    console.log("updated imgUrl", uploadedImageUrl); // Getting Latest
-
-    const updatedPost = {
+    const updatedPostData = {
       title,
-      content,
+      body,
       image: uploadedImageUrl,
     };
-    console.log("updatedPost", updatedPost);
     try {
       // TODO: Add Server Url
       const response = await axios.patch(
         `http://localhost:5000/api/v1/blog/${post._id}`,
-        updatedPost
+        updatedPostData
       );
       Swal.fire("Success!", "Post updated successfully.", "success");
       onPostUpdate();
@@ -61,7 +49,6 @@ const PostEditModal = ({ isOpen, onClose, post, onPostUpdate }) => {
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center overflow-auto">
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl max-h-screen overflow-y-auto">
         <h2 className="text-2xl font-semibold mb-4">Edit Post</h2>
-        {console.log("post", post)}
 
         {/* Title */}
         <div className="mb-4">
@@ -89,10 +76,9 @@ const PostEditModal = ({ isOpen, onClose, post, onPostUpdate }) => {
         <div>
           <label className="block font-medium">Content</label>
           <RichTextEditor
-            content={content}
+            content={body}
             onChangeContent={handleContentChange}
           />
-          {console.log("content", content)}
         </div>
 
         {/* Confirmation Button */}
