@@ -40,18 +40,25 @@ const PublishNewPost = () => {
   };
 
   const onSubmit = async (data) => {
+    // const postData2 = {
+    //   ...data,
+    //   content,
+    //   imgUrl: uploadedImageUrl,
+    //   categories: selectedCategories.map((cat) => cat.value), // Convert categories to array of values
+    // };
     const postData = {
-      ...data,
-      content,
-      imgUrl: uploadedImageUrl,
-      categories: selectedCategories.map((cat) => cat.value), // Convert categories to array of values
+      title: title,
+      author: "Ismail",
+      image: uploadedImageUrl,
+      body: content,
+      categories: selectedCategories.map((cat) => cat?.value),
     };
     console.log("postData", postData);
-    // EXTRACT DATA AND CONVERT TO PROPER POST FORMAT
+
     try {
-      // TODO: Add Server Url
+      // TODO: Replace with server url
       const res = await axios.post(
-        "https://fsdg-latest-v2.vercel.app/api/change-url-posts",
+        "http://localhost:5000/api/v1/blog",
         postData,
         { headers: { "Content-Type": "application/json" } }
       );
@@ -63,12 +70,12 @@ const PublishNewPost = () => {
       Swal.fire("Success!", "Posted successfully.", "success");
     } catch (err) {
       Swal.fire("Error!", "Failed to post.", "error");
-      console.error("Error creating post:", err);
+      console.error("Error creating post:", err?.message);
     }
   };
 
   return (
-    <div className="mx-10 my-10 ">
+    <div className="mx-10 my-10 h-full">
       <h1 className="text-2xl font-semibold mb-6 text-center text-white">
         Publish A New Post
       </h1>
@@ -142,14 +149,10 @@ const PublishNewPost = () => {
       {/* Preview Section */}
       {content && (
         <div className="mt-8">
-          <h2 className="text-xl font-semibold mb-4">Preview Content</h2>
+          <h2 className="text-xl font-semibold mb-4 text-white">
+            Preview Content
+          </h2>
           <div className="border border-gray-300 p-4 md:p-8 rounded w-full max-w-full overflow-hidden">
-            {title ? (
-              <h1 className="text-lg md:text-xl font-semibold text-gray-800 mb-3 break-words">
-                {title}
-              </h1>
-            ) : null}
-
             {uploadedImageUrl ? (
               <img
                 src={uploadedImageUrl}
@@ -159,7 +162,7 @@ const PublishNewPost = () => {
             ) : null}
 
             <div
-              className="text-gray-700 break-words"
+              className="break-words text-white"
               dangerouslySetInnerHTML={{ __html: content }}
             />
           </div>
