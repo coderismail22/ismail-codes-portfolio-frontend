@@ -12,7 +12,6 @@ const categoriesOptions = [
   { value: "mongoose", label: "Mongoose" },
   { value: "react", label: "React" },
   { value: "javascript", label: "JavaScript" },
-  // Add more categories here as needed
 ];
 
 const PublishNewPost = () => {
@@ -69,16 +68,20 @@ const PublishNewPost = () => {
   };
 
   return (
-    <div className="mx-10 my-8 ">
-      <h1 className="text-2xl font-semibold mb-6 text-center">
+    <div className="mx-10 my-10 ">
+      <h1 className="text-2xl font-semibold mb-6 text-center text-white">
         Publish A New Post
       </h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 border p-2">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="space-y-4 border rounded-md p-5 mb-10"
+      >
         {/* Title */}
         <div>
-          <label className="block font-medium">Title</label>
+          <label className="block font-medium text-white">Title</label>
           <input
             type="text"
+            placeholder="Enter a title"
             className="w-full border border-gray-300 rounded p-2"
             {...register("title", { required: "Title is required" })}
           />
@@ -89,13 +92,13 @@ const PublishNewPost = () => {
 
         {/* Category Selection */}
         <div>
-          <label className="block font-medium">Category</label>
+          <label className="block font-medium text-white">Category</label>
           <Select
             isMulti
             options={categoriesOptions}
             value={selectedCategories}
             onChange={handleCategoriesChange}
-            className="basic-multi-select"
+            className="basic-multi-select text-black"
             classNamePrefix="select"
             placeholder="Select Categories"
           />
@@ -108,7 +111,9 @@ const PublishNewPost = () => {
 
         {/* Image Upload Section */}
         <div>
-          <label className="block font-medium">Upload Cover Image</label>
+          <label className="block font-medium text-white">
+            Upload Cover Image
+          </label>
           <ImageUpload setUploadedImageUrl={setUploadedImageUrl} />
           {uploadedImageUrl === "" && (
             <p className="text-red-500 text-sm">Image is required</p>
@@ -116,7 +121,7 @@ const PublishNewPost = () => {
         </div>
 
         <div>
-          <label className="block font-medium">Content</label>
+          <label className="block font-medium text-white">Content</label>
           <RichTextEditor
             content={content}
             onChangeContent={handleContentChange}

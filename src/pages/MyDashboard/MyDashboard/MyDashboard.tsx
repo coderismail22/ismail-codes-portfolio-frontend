@@ -3,7 +3,7 @@ import MyDashboardNavbar from "../MyDashboardNavbar/MyDashboardNavbar";
 
 const MyDashboard = () => {
   return (
-    <div>
+    <div className="bg-[#2D2E2F] ">
       <MyDashboardNavbar />
       <Outlet />
     </div>

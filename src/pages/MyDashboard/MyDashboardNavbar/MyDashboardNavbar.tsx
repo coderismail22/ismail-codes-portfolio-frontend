@@ -28,7 +28,7 @@ const MyDashboardNavbar = () => {
   };
 
   return (
-    <main className="w-full lg:w-10/12 mx-auto h-[80px] flex flex-col justify-between z-[9999] py-5 px-5 md:px-5">
+    <main className="mx-auto h-[70px] flex flex-col justify-between z-[9999] px-5 text-white bg-[#26283b] p-1">
       <nav className="flex justify-between items-center">
         <div className="flex items-center justify-between w-full">
           <Link to="/" className="w-[120px]">
