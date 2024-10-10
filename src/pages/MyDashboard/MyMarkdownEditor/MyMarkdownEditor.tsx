@@ -79,16 +79,16 @@ const MyMarkdownEditor = () => {
 
   return (
     <div className="mx-4 my-8 border rounded-md p-2">
-      <h1 className="text-2xl font-semibold mb-6 mt-5 text-center text-white">
+      <h1 className="text-2xl font-semibold mb-6 mt-5 text-center text-white ">
         Publish a New Note
       </h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="bg-[#CBD5E1] p-1 rounded-md">
         {/* Title */}
         <div>
           <label className="block font-medium text-white ">Title</label>
           <input
             type="text"
-            className="w-full border border-gray-300 rounded p-2 text-white"
+            className="w-full border border-gray-300 rounded p-2 "
             {...register("title", { required: "Title is required" })}
           />
           {errors.title && (

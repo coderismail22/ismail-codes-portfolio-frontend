@@ -70,12 +70,12 @@ const PublishNewPost = () => {
 
   return (
     <div className="mx-10 my-10 h-full">
-      <h1 className="text-2xl font-semibold mb-6 text-center text-white">
+      <h1 className="text-2xl font-semibold mb-6 text-center text-white ">
         Publish A New Post
       </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="h-full space-y-4 border rounded-md p-5 mb-10"
+        className="h-full space-y-4 border rounded-md p-5 mb-10 bg-[#CBD5E1]"
       >
         {/* Title */}
         <div>

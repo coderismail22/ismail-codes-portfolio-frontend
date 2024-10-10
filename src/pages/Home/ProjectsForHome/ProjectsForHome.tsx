@@ -107,7 +107,7 @@ const ProjectsForHome = () => {
         </p>
       ) : (
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center px-16 my-20 gap-2"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-stretch px-16 my-20 gap-2"
           variants={containerVariants}
           initial="hidden"
           animate="visible"

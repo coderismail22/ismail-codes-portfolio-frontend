@@ -101,7 +101,7 @@ const MyProjectEditor = () => {
     <div className="container mx-auto p-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-6 bg-white p-8 rounded-lg shadow-md max-w-lg mx-auto"
+        className="space-y-6 bg-[#CBD5E1] p-8 rounded-lg shadow-md max-w-lg mx-auto"
       >
         {/* Title */}
         <div>
