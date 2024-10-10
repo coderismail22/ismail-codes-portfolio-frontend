@@ -20,6 +20,11 @@ const categoriesOptions = [
   // Add more categories as needed
 ];
 
+type TSelectOption = {
+  value: string;
+  label: string;
+};
+
 const MyMarkdownEditor = () => {
   const {
     register,
@@ -30,7 +35,9 @@ const MyMarkdownEditor = () => {
   } = useForm();
   const [uploadedImageUrl, setUploadedImageUrl] = useState<string>("");
   const [markdownContent, setMarkdownContent] = useState<string>("");
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState<TSelectOption[]>(
+    []
+  );
 
   // Handle content change for markdown
   const handleEditorChange = ({ text }: { text: string }) => {
