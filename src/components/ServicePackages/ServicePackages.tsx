@@ -84,7 +84,7 @@ const ServicePackages = () => {
                 </div>
                 <Separator className="my-1" />
 
-                <Link to={"payment"}>
+                <Link to="/contact">
                   <Button>Purchase</Button>
                 </Link>
               </div>
@@ -150,7 +150,7 @@ const ServicePackages = () => {
                 </div>
                 <Separator className="my-1" />
 
-                <Link to={"payment"}>
+                <Link to="/contact">
                   <Button>Purchase</Button>
                 </Link>
               </div>
@@ -216,7 +216,7 @@ const ServicePackages = () => {
                 </div>
                 <Separator className="my-1" />
 
-                <Link to={"payment"}>
+                <Link to="/contact">
                   <Button>Purchase</Button>
                 </Link>
               </div>
@@ -277,7 +277,7 @@ const ServicePackages = () => {
                 </div>
                 <Separator className="my-1" />
 
-                <Link to={"payment"}>
+                <Link to="/contact">
                   <Button>Purchase</Button>
                 </Link>
               </div>
@@ -349,7 +349,7 @@ const ServicePackages = () => {
                 </div>
                 <Separator className="my-1" />
 
-                <Link to={"payment"}>
+                <Link to="/contact">
                   <Button>Purchase</Button>
                 </Link>
               </div>
@@ -414,7 +414,7 @@ const ServicePackages = () => {
                 </div>
                 <Separator className="my-1" />
 
-                <Link to={"payment"}>
+                <Link to="/contact">
                   <Button>Purchase</Button>
                 </Link>
               </div>
