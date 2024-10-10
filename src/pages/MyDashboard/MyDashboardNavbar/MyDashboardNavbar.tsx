@@ -6,8 +6,10 @@ import { TbLayoutSidebarLeftCollapse } from "react-icons/tb";
 
 const navitems = [
   { title: "Profile", path: "my-profile" },
+  { title: "Project Editor", path: "my-project-editor" },
   { title: "Blog Editor", path: "my-rich-text-editor" },
   { title: "Markdown Editor", path: "my-markdown-editor" },
+  { title: "Projects", path: "my-projects" },
   { title: "Posts", path: "my-blog-posts" },
   { title: "Notes", path: "my-notes" },
 ];

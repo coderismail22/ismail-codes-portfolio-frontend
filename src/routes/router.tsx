@@ -14,6 +14,8 @@ import PublishNewPost from "@/pages/MyDashboard/PublishNewPost/PublishNewPost";
 import MyMarkdownEditor from "@/pages/MyDashboard/MyMarkdownEditor/MyMarkdownEditor";
 import MyBlogPosts from "@/pages/MyDashboard/MyBlogPosts/MyBlogPosts";
 import MyNotes from "@/pages/MyDashboard/MyNotes/MyNotes";
+import MyProjectEditor from "@/pages/MyDashboard/MyProjectEditor/MyProjectEditor";
+import MyProjects from "@/pages/MyDashboard/MyProjects/MyProjects";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -58,6 +60,10 @@ export const router = createBrowserRouter([
         element: <MyProfile />, // Wrap each admin route with ProtectedRoute
       },
       {
+        path: "my-project-editor",
+        element: <MyProjectEditor />,
+      },
+      {
         path: "my-rich-text-editor",
         element: <PublishNewPost />,
       },
@@ -66,12 +72,12 @@ export const router = createBrowserRouter([
         element: <MyMarkdownEditor />,
       },
       {
-        path: "my-blog-posts",
-        element: <MyBlogPosts />,
+        path: "my-projects",
+        element: <MyProjects />,
       },
       {
-        path: "my-markdown-editor",
-        element: <MyMarkdownEditor />,
+        path: "my-blog-posts",
+        element: <MyBlogPosts />,
       },
       {
         path: "my-notes",
