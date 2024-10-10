@@ -9,7 +9,7 @@ const ProtectedRoute = ({ children }) => {
     const checkAuthStatus = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/v1/admin/auth-check",
+          "http://localhost:5000/api/v1/admin/check-auth",
           {
             method: "POST",
             credentials: "include", // Include cookies with the request

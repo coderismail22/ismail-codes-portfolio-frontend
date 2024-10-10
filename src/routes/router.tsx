@@ -17,6 +17,7 @@ import MyNotes from "@/pages/MyDashboard/MyNotes/MyNotes";
 import MyProjectEditor from "@/pages/MyDashboard/MyProjectEditor/MyProjectEditor";
 import MyProjects from "@/pages/MyDashboard/MyProjects/MyProjects";
 import Login from "@/pages/SharedPages/Login/Login";
+import ProtectedRoute from "@/components/ProtectedRoute/ProtectedRoute";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -58,35 +59,67 @@ export const router = createBrowserRouter([
   },
   {
     path: "/mysecretdashboard",
-    element: <MyDashboard />,
+    element: (
+      <ProtectedRoute>
+        <MyDashboard />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: "my-profile",
-        element: <MyProfile />, // Wrap each admin route with ProtectedRoute
+        element: (
+          <ProtectedRoute>
+            <MyProfile />,
+          </ProtectedRoute>
+        ),
       },
       {
         path: "my-project-editor",
-        element: <MyProjectEditor />,
+        element: (
+          <ProtectedRoute>
+            <MyProjectEditor />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "my-rich-text-editor",
-        element: <PublishNewPost />,
+        element: (
+          <ProtectedRoute>
+            <PublishNewPost />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "my-markdown-editor",
-        element: <MyMarkdownEditor />,
+        element: (
+          <ProtectedRoute>
+            <MyMarkdownEditor />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "my-projects",
-        element: <MyProjects />,
+        element: (
+          <ProtectedRoute>
+            <MyProjects />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "my-blog-posts",
-        element: <MyBlogPosts />,
+        element: (
+          <ProtectedRoute>
+            <MyBlogPosts />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "my-notes",
-        element: <MyNotes />,
+        element: (
+          <ProtectedRoute>
+            <MyNotes />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

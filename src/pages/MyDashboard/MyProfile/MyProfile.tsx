@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 import { RotatingLines } from "react-loader-spinner";
+import { LogoutButton } from "../LogoutButton/LogoutButton";
 
 const MyProfile = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -21,9 +22,9 @@ const MyProfile = () => {
       try {
         // TODO: Add Server Url
         const response = await fetch(
-          "https://fsdg-latest-v2.vercel.app/api/admin/auth-check",
+          "http://localhost:5000/api/v1/admin/check-auth",
           {
-            method: "GET",
+            method: "POST",
             credentials: "include",
           }
         );
@@ -53,9 +54,8 @@ const MyProfile = () => {
 
     try {
       // Fetch request
-      // TODO: Add Server Url
       const response = await fetch(
-        "https://fsdg-latest-v2.vercel.app/api/admin/change-password",
+        "http://localhost:5000/api/v1/admin/change-password",
         {
           method: "POST",
           credentials: "include", // Ensure cookies are included
@@ -95,9 +95,9 @@ const MyProfile = () => {
     );
   }
 
-  //   if (!isAuthenticated) {
-  //     return <Navigate to="/login" />;
-  //   }
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <div className="h-screen flex flex-col items-center justify-center gap-5 overflow-hidden">
@@ -154,6 +154,9 @@ const MyProfile = () => {
           Change Password
         </button>
       </form>
+      <div>
+        <LogoutButton />
+      </div>
     </div>
   );
 };
