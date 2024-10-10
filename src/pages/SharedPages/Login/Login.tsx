@@ -18,7 +18,7 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    defaultValues: { email: "test@best.com", password: "1234" },
+    defaultValues: { email: "test@best.com", password: "123456" },
   });
 
   // Handle security question submission
@@ -53,7 +53,7 @@ const Login = () => {
         timer: 1500,
         timerProgressBar: true,
         willClose: () => {
-          navigate("/mysecretdashboard"); // Redirect after login
+          navigate("/mysecretdashboard/my-profile"); // Redirect after login
         },
       });
     } catch (error) {
