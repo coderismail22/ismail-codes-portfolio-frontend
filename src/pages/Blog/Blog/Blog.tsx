@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { BsCalendar } from "react-icons/bs";
-import { FaSearch } from "react-icons/fa";
+import { FaImage, FaSearch } from "react-icons/fa";
 import { BlogPost } from "./blogpost.type";
 
 // Blog Component
@@ -21,6 +21,7 @@ const Blog = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
+  const [imgErrors, setImgErrors] = useState<{ [key: string]: boolean }>({}); // Track image errors per blogPost ID
 
   // Fetch BlogPosts
   const fetchBlogPosts = async () => {
@@ -34,6 +35,14 @@ const Blog = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  // Handle image load error
+  const handleImageError = (id: string) => {
+    setImgErrors((prevErrors) => ({
+      ...prevErrors,
+      [id]: true,
+    }));
   };
 
   // Fetch blog posts on component mount
@@ -152,9 +161,23 @@ const Blog = () => {
               <div className="text-lg md:text-xl font-semibold text-gray-800 mb-3">
                 {blogPost.title}
               </div>
-              {/* Cover Image */}
+              {/* Image */}
               <div>
-                <img src={blogPost.image} className="w-full" />
+                {imgErrors[blogPost._id] ? (
+                  <div className="my-2 w-full h-full flex flex-col items-center justify-center bg-gray-200 border border-dashed border-gray-400 rounded-lg shadow-md">
+                    <FaImage className="size-8 md:size-10 lg:size-20 mt-10" />
+                    <p className="text-2xl text-gray-500 text-center font-medium p-10 ">
+                      Image Not Available
+                    </p>
+                  </div>
+                ) : (
+                  <img
+                    className="w-full h-36 object-cover object-center rounded-lg shadow-md"
+                    src={blogPost.image}
+                    alt="Note Cover Image"
+                    onError={() => handleImageError(blogPost._id)}
+                  />
+                )}
               </div>
 
               {/* Content */}
