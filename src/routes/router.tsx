@@ -16,6 +16,7 @@ import MyBlogPosts from "@/pages/MyDashboard/MyBlogPosts/MyBlogPosts";
 import MyNotes from "@/pages/MyDashboard/MyNotes/MyNotes";
 import MyProjectEditor from "@/pages/MyDashboard/MyProjectEditor/MyProjectEditor";
 import MyProjects from "@/pages/MyDashboard/MyProjects/MyProjects";
+import Login from "@/pages/SharedPages/Login/Login";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
         element: <Contact />,
       },
     ],
+  },
+  {
+    path: "/mylogin",
+    element: <Login />,
   },
   {
     path: "/mysecretdashboard",
