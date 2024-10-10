@@ -16,9 +16,9 @@ const BlogPostCard = ({ blogPost, handleImageError, imgErrors }) => {
         {/* Image */}
         <div>
           {imgErrors[blogPost._id] ? (
-            <div className="my-2 w-full h-full flex flex-col items-center justify-center bg-gray-200 border border-dashed border-gray-400 rounded-lg shadow-md">
-              <FaImage className="size-8 md:size-10 lg:size-20 mt-10" />
-              <p className="text-2xl text-gray-500 text-center font-medium p-10 ">
+            <div className="my-2 w-full h-36 flex flex-col items-center justify-center bg-gray-200 border border-dashed border-gray-400 rounded-lg shadow-md">
+              <FaImage className="size-8" />
+              <p className="text-xl text-gray-500 text-center font-medium">
                 Image Not Available
               </p>
             </div>

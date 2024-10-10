@@ -89,7 +89,7 @@ const ProjectsForHome = () => {
         whileHover="hover"
         className="overflow-hidden"
       >
-        <ProjectCard project={project} />
+        <ProjectCard project={project} key={project._id} />
       </motion.div>
     );
   };
