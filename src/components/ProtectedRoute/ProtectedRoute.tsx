@@ -11,7 +11,7 @@ const ProtectedRoute = ({ children }) => {
         const response = await fetch(
           "http://localhost:5000/api/v1/admin/auth-check",
           {
-            method: "GET",
+            method: "POST",
             credentials: "include", // Include cookies with the request
           }
         );
@@ -37,7 +37,7 @@ const ProtectedRoute = ({ children }) => {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/mylogin" />;
   }
 
   return children;

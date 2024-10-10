@@ -1,26 +1,24 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import logo from "/src/assets/ic.gif";
-// import Swal from "sweetalert2"; // Import SweetAlert2
-import { RotatingLines } from "react-loader-spinner";
 import Swal from "sweetalert2";
-// import axios from "axios"; // Import Axios
+import { RotatingLines } from "react-loader-spinner";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [securityAnswer, setSecurityAnswer] = useState("");
   const [isQuestionAnswered, setIsQuestionAnswered] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  //   const [loading, setLoading] = useState(false); // State to manage loading
-  //   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false); // State to manage loading
+  const navigate = useNavigate();
 
   const {
     register,
-    // handleSubmit,
+    handleSubmit,
     formState: { errors },
   } = useForm({
-    defaultValues: { email: "test@test.org", password: "12345678" },
+    defaultValues: { email: "test@best.com", password: "1234" },
   });
 
   // Handle security question submission
@@ -35,59 +33,58 @@ const Login = () => {
     }
   };
 
-  //   const loginHandler = async (formData: FormData) => {
-  //     setLoading(true); // Start loading spinner
-  //     try {
-  //        TODO: Add Server Url
-  //       const response = await axios.post(
-  //         "https://fsdg-latest-v2.vercel.app/api/admin/login",
-  //         formData,
-  //         { withCredentials: true } // Include cookies in the request
-  //       );
+  const loginHandler = async (formData: FormData) => {
+    setLoading(true); // Start loading spinner
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/v1/admin/login",
+        formData,
+        { withCredentials: true } // Include cookies in the request
+      );
 
-  //       const result = response.data;
-  //       console.log("from loginhandler", result);
+      const result = response.data;
+      console.log("from loginhandler", result);
 
-  //        On successful login
-  //       Swal.fire({
-  //         icon: "success",
-  //         title: "Login successful",
-  //         text: "Redirecting to dashboard...",
-  //         timer: 1500,
-  //         timerProgressBar: true,
-  //         willClose: () => {
-  //           navigate("/dashboard/admin/admin-profile"); // Redirect after login
-  //         },
-  //       });
-  //     } catch (error) {
-  //       console.error("Login failed:", error);
-  //       Swal.fire({
-  //         icon: "error",
-  //         title: "Login failed",
-  //         text:
-  //              error.response?.data?.message ||
-  //           "Something went wrong. Please try again.",
-  //       });
-  //     } finally {
-  //       setLoading(false); // Stop loading spinner
-  //     }
-  //   };
+      //  On successful login
+      Swal.fire({
+        icon: "success",
+        title: "Login successful",
+        text: "Redirecting to dashboard...",
+        timer: 1500,
+        timerProgressBar: true,
+        willClose: () => {
+          navigate("/mysecretdashboard"); // Redirect after login
+        },
+      });
+    } catch (error) {
+      console.error("Login failed:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Login failed",
+        text:
+          error.response?.data?.message ||
+          "Something went wrong. Please try again.",
+      });
+    } finally {
+      setLoading(false); // Stop loading spinner
+    }
+  };
 
   // Form submission
-  //   const onSubmit = async (formData: FormData) => {
-  //     await loginHandler(formData);
-  //   };
+  const onSubmit = async (formData: FormData) => {
+    await loginHandler(formData);
+  };
 
   return (
-    <div className="min-h-screen mx-auto flex flex-col items-center justify-center bg-[#121928]">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#121928]">
       {!isQuestionAnswered ? (
         // Security Question
         <div className="p-8 rounded-xl shadow-md bg-[#CBD5E1]">
           <div className="space-y-3 text-center py-2">
             <h1 className="text-3xl md:text-4xl font-medium text-blue-600">
-              Assalamualaikum !
+              Assalamualaikum!
             </h1>
-            <p className="text-lg">What's up ?</p>
+            <p className="text-lg">What's up?</p>
             <form
               onSubmit={handleSecuritySubmit}
               className="space-y-3 text-sm text-center"
@@ -106,27 +103,21 @@ const Login = () => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center bg-[#CBD5E1] rounded-lg ">
-          <div className="p-8 rounded-xl shadow-md">
-            <div className="space-y-3 text-center py-2">
-              <h1 className="text-3xl md:text-4xl font-medium text-blue-600">
-                Login
-              </h1>
-            </div>
+        <div className="flex flex-col items-center justify-center bg-[#CBD5E1] rounded-lg w-full md:w-[40%] p-6">
+          <div className="w-full">
+            <h1 className="text-3xl md:text-4xl font-medium text-blue-600 text-center mb-4">
+              Login
+            </h1>
 
             {/* Display spinner while loading */}
-            {/* {
-                        loading &&
-                      <div className="flex justify-center">
-                        <RotatingLines width="30" />
-                      </div>
-                    } */}
+            {loading && (
+              <div className="flex justify-center mb-3">
+                <RotatingLines width="30" />
+              </div>
+            )}
 
             {/* Login Form */}
-            <form
-              //   onSubmit={handleSubmit(onSubmit)}
-              className="space-y-3"
-            >
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div className="space-y-1 text-sm">
                 <label className="block text-rose-700">Email</label>
                 <input
@@ -139,12 +130,13 @@ const Login = () => {
                     },
                   })}
                   placeholder="Email"
-                  className="w-full px-4 py-3 rounded-md bg-rose-50"
+                  className="w-full px-4 py-3 rounded-md bg-rose-50 border border-gray-300"
                 />
                 {errors.email && (
-                  <p className="text-red-500">{errors.email.message}</p>
+                  <p className="text-red-500 text-sm">{errors.email.message}</p>
                 )}
               </div>
+
               <div className="space-y-1 text-sm">
                 <label className="block text-rose-700">Password</label>
                 <div className="relative">
@@ -158,7 +150,7 @@ const Login = () => {
                       },
                     })}
                     placeholder="Password"
-                    className="w-full px-4 py-3 rounded-md bg-rose-50"
+                    className="w-full px-4 py-3 rounded-md bg-rose-50 border border-gray-300"
                   />
                   <span
                     className="absolute right-3 top-3 cursor-pointer"
@@ -172,10 +164,13 @@ const Login = () => {
                   </span>
                 </div>
                 {errors.password && (
-                  <p className="text-red-500">{errors.password.message}</p>
+                  <p className="text-red-500 text-sm">
+                    {errors.password.message}
+                  </p>
                 )}
               </div>
-              <button className="block w-full p-2 text-center rounded bg-primary  text-white bg-blue-500 hover:bg-blue-600 transition-all duration-500">
+
+              <button className="block w-full p-2 text-center rounded bg-blue-500 text-white hover:bg-blue-600 transition-all duration-500">
                 Login
               </button>
             </form>
