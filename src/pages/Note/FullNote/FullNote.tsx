@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import { RotatingLines } from "react-loader-spinner";
 import { TNote } from "../Notes/note.type";
-import { FaImage } from "react-icons/fa";
 import moment from "moment";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -127,9 +127,9 @@ const FullNote = () => {
       <div className="h-screen flex items-center justify-center">
         <RotatingLines
           visible={true}
-          height="46"
+          // height="46"
           width="46"
-          color="grey"
+          // color="grey"
           strokeWidth="5"
           animationDuration="0.75"
           ariaLabel="rotating-lines-loading"
