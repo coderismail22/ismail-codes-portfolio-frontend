@@ -1,18 +1,27 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import RichTextEditor from "../RichTextEditor/RichTextEditor.tsx";
 import ImageUpload from "../ImageUpload/ImageUpload.tsx"; // Assuming ImageUpload is in the ImageUpload folder
 import Swal from "sweetalert2";
-import Select from "react-select";
+import Select, { MultiValue } from "react-select";
 
-const categoriesOptions = [
+interface CategoryOption {
+  value: string;
+  label: string;
+}
+const categoriesOptions: CategoryOption[] = [
   { value: "html", label: "HTML" },
   { value: "css", label: "CSS" },
   { value: "mongoose", label: "Mongoose" },
   { value: "react", label: "React" },
   { value: "javascript", label: "JavaScript" },
 ];
+
+interface FormData {
+  title: string;
+}
 
 const PublishNewPost = () => {
   const {
@@ -21,31 +30,35 @@ const PublishNewPost = () => {
     formState: { errors },
     reset,
     watch,
-  } = useForm();
+  } = useForm<FormData>();
   const title = watch("title", "");
-  const [content, setContent] = useState("");
-  const [uploadedImageUrl, setUploadedImageUrl] = useState("");
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [content, setContent] = useState<string>("");
+  const [uploadedImageUrl, setUploadedImageUrl] = useState<string>("");
+  const [selectedCategories, setSelectedCategories] = useState<
+    MultiValue<CategoryOption>
+  >([]);
 
   console.log(selectedCategories);
 
   // Handle Category Change
-  const handleCategoriesChange = (selectedOptions) => {
+  const handleCategoriesChange = (
+    selectedOptions: MultiValue<CategoryOption>
+  ) => {
     setSelectedCategories(selectedOptions || []); // Ensure it's an empty array when no categories are selected
   };
 
   // Handle content change
-  const handleContentChange = (newContent) => {
+  const handleContentChange = (newContent: string) => {
     setContent(newContent); // Update the state in the parent
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: FormData) => {
     const postData = {
       title: title,
       author: "Ismail",
       image: uploadedImageUrl,
       body: content,
-      categories: selectedCategories.map((cat) => cat?.value),
+      category: selectedCategories.map((cat) => cat?.value),
     };
     console.log("postData", postData);
 
@@ -62,9 +75,20 @@ const PublishNewPost = () => {
       setUploadedImageUrl(""); // Clear the uploaded image URL
       setSelectedCategories([]); // Clear the selected categories
       Swal.fire("Success!", "Posted successfully.", "success");
-    } catch (err) {
-      Swal.fire("Error!", "Failed to post.", "error");
-      console.error("Error creating post:", err?.message);
+    } catch (err: unknown) {
+      let errorMessage = "Failed to post."; // Default error message
+
+      // Check if err is an instance of AxiosError or has a message property
+      if (axios.isAxiosError(err) && err.response) {
+        // If using Axios, we can extract a more detailed error message
+        errorMessage = err.response.data?.message || errorMessage; // Fallback to default message
+      } else if (typeof err === "object" && err !== null && "message" in err) {
+        // If err is an object and has a message property
+        errorMessage = (err as { message?: string }).message || errorMessage; // Fallback to default message
+      }
+
+      Swal.fire("Error!", errorMessage, "error");
+      console.error("Error creating post:", errorMessage);
     }
   };
 
