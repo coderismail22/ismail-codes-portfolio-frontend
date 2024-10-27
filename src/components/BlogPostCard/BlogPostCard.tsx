@@ -1,8 +1,20 @@
 import { FaArrowRight, FaImage } from "react-icons/fa"; // Icons
 import { Link } from "react-router-dom"; // Link for routing
 import moment from "moment"; // For formatting the date
+import { IBlogPost } from "./blogPost.interface";
 
-const BlogPostCard = ({ blogPost, handleImageError, imgErrors }) => {
+//define props
+interface IBlogPostCardProps {
+  blogPost: IBlogPost;
+  handleImageError: (id: string) => void;
+  imgErrors: { [key: string]: boolean };
+}
+
+const BlogPostCard = ({
+  blogPost,
+  handleImageError,
+  imgErrors,
+}: IBlogPostCardProps) => {
   return (
     <div
       key={blogPost._id}

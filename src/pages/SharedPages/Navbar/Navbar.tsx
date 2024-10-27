@@ -32,7 +32,7 @@ const Navbar = () => {
     }, 200); // Adjust delay as needed
   };
 
-  const handleScrollNavigation = (path, elementId) => {
+  const handleScrollNavigation = (elementId: string) => {
     if (location.pathname !== "/") {
       // If user is not on the home page, navigate to home and scroll after navigation
       navigate("/");
