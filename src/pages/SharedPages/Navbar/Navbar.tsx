@@ -86,7 +86,7 @@ const Navbar = () => {
             item.isScroll ? (
               <button
                 key={index}
-                onClick={() => handleScrollNavigation(item.path, item.path)} // Handle scroll navigation
+                onClick={() => handleScrollNavigation(item.path)} // Handle scroll navigation
                 className="hover:text-blue-500 hover:cursor-pointer hidden lg:inline-block font-montserrat font-bold text-center text-sm md:text-base w-[50px]"
               >
                 {item.title}
@@ -125,7 +125,7 @@ const Navbar = () => {
                   key={index}
                   onClick={() => {
                     closeSidebarWithDelay(); // Close the sidebar
-                    handleScrollNavigation(item.path, item.path); // Perform scroll navigation
+                    handleScrollNavigation(item.path); // Perform scroll navigation
                   }}
                   className="font-bold flex flex-col items-center justify-center"
                 >
