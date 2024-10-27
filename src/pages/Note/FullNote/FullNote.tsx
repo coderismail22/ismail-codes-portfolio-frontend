@@ -166,6 +166,7 @@ const FullNote = () => {
                 src={note.image}
                 alt="Note Cover"
                 className="w-full h-80 object-cover object-center"
+                onError={() => setImgError(true)} // Set imgError to true if image fails to load
               />
             )}
 
