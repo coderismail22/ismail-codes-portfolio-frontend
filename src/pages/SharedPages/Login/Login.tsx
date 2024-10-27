@@ -22,7 +22,7 @@ const Login = () => {
   });
 
   // Handle security question submission
-  const handleSecuritySubmit = (e) => {
+  const handleSecuritySubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Replace 'correct answer' with your secret answer (e.g., "Your favorite color?")
     if (securityAnswer.toLowerCase() === "alhamdulillah") {
@@ -33,12 +33,12 @@ const Login = () => {
     }
   };
 
-  const loginHandler = async (formData: FormData) => {
+  const loginHandler = async (data: { email: string; password: string }) => {
     setLoading(true); // Start loading spinner
     try {
       const response = await axios.post(
         "http://localhost:5000/api/v1/admin/login",
-        formData,
+        data,
         { withCredentials: true } // Include cookies in the request
       );
 
@@ -56,7 +56,8 @@ const Login = () => {
           navigate("/mysecretdashboard/my-profile"); // Redirect after login
         },
       });
-    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
       console.error("Login failed:", error);
       Swal.fire({
         icon: "error",
@@ -71,8 +72,8 @@ const Login = () => {
   };
 
   // Form submission
-  const onSubmit = async (formData: FormData) => {
-    await loginHandler(formData);
+  const onSubmit = async (data: { email: string; password: string }) => {
+    await loginHandler(data);
   };
 
   return (
