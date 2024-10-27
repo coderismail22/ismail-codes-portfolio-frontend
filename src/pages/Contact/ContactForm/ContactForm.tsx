@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm, Controller } from "react-hook-form";
 import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -6,36 +9,41 @@ import Swal from "sweetalert2";
 import Select from "react-select";
 import countryList from "react-select-country-list";
 import Flag from "react-world-flags";
-import { color } from "framer-motion";
+interface FormValues {
+  name: string;
+  country: { label: string; value: string };
+  email: string;
+  message: string;
+}
 
 // Custom styles for react-select dropdown to match the dark theme
 const customStyles = {
-  control: (provided) => ({
+  control: (provided: any) => ({
     ...provided,
     backgroundColor: "#374151", // Tailwind's gray-700
     color: "white",
     borderColor: "#6B7280", // Tailwind's gray-500
     padding: "4px 8px",
   }),
-  input: (provided) => ({
+  input: (provided: any) => ({
     ...provided,
     color: "white", // make the typed text white
   }),
-  singleValue: (provided) => ({
+  singleValue: (provided: any) => ({
     ...provided,
     color: "white",
   }),
-  menu: (provided) => ({
+  menu: (provided: any) => ({
     ...provided,
     backgroundColor: "#374151", // Tailwind's gray-700
     color: "white",
   }),
-  option: (provided, state) => ({
+  option: (provided: any, state: any) => ({
     ...provided,
     backgroundColor: state.isFocused ? "#1E293B" : "#374151", // Focus: gray-800, default: gray-700
     color: state.isFocused ? "#FFFFFF" : "#FFFFFF",
   }),
-  placeholder: (provided) => ({
+  placeholder: (provided: any) => ({
     ...provided,
     color: "#9CA3AF", // Tailwind's gray-400 for placeholder
   }),
@@ -49,19 +57,25 @@ const ContactForm = () => {
     formState: { errors },
     reset,
     control,
-  } = useForm();
+  } = useForm<FormValues>();
 
   // State for reCAPTCHA
   const [captchaVerified, setCaptchaVerified] = useState(false);
   const [loading, setLoading] = useState(false); // State for loading spinner
 
   // Handle CAPTCHA verification
-  const onCaptchaChange = (value) => {
+  const onCaptchaChange = (value: string | null) => {
     setCaptchaVerified(!!value); // Enable/disable submit based on CAPTCHA verification
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: {
+    name: string;
+    country: { label: string; value: string };
+    email: string;
+    message: string;
+  }) => {
     const { name, country, email, message } = data;
+    console.log("country", country);
     const countryName = country?.label;
     const fullFormData = {
       name,
@@ -96,8 +110,8 @@ const ContactForm = () => {
 
   // Country list options
   const countries = countryList().getData();
-
-  const filterOption = (option, inputValue) => {
+  type OptionType = { label: string; data?: { label: string } };
+  const filterOption = (option: OptionType, inputValue: string) => {
     // option.data.label if the option is passed with a `data` wrapper, otherwise use `label`
     const label = (option.data && option.data.label) || option.label;
     const input = inputValue.toLowerCase();
@@ -150,7 +164,7 @@ const ContactForm = () => {
                 styles={customStyles} // Apply custom styles
                 placeholder="Select your country"
                 filterOption={filterOption}
-                getOptionLabel={(option) => (
+                formatOptionLabel={(option) => (
                   <div className="flex items-center">
                     <Flag
                       code={option.value}

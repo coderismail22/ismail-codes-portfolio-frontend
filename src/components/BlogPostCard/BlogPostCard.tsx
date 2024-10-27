@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { FaArrowRight, FaImage } from "react-icons/fa"; // Icons
 import { Link } from "react-router-dom"; // Link for routing
 import moment from "moment"; // For formatting the date

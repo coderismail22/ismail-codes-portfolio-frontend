@@ -5,10 +5,8 @@ import moment from "moment";
 import debounce from "lodash.debounce";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Link } from "react-router-dom";
-import { FaArrowRightLong } from "react-icons/fa6";
 import { BsCalendar } from "react-icons/bs";
-import { FaImage, FaSearch } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import { BlogPost } from "./blogpost.type";
 import BlogPostCard from "@/components/BlogPostCard/BlogPostCard";
 
@@ -154,7 +152,12 @@ const Blog = () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
           {filteredBlogPosts.slice(0, visibleBlogPosts).map((blogPost) => (
-            <BlogPostCard blogPost={blogPost} handleImageError={handleImageError} imgErrors={imgErrors} key={blogPost._id}/>
+            <BlogPostCard
+              blogPost={blogPost}
+              handleImageError={handleImageError}
+              imgErrors={imgErrors}
+              key={blogPost._id}
+            />
           ))}
         </div>
       )}
