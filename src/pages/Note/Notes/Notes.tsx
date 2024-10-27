@@ -7,7 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { BsCalendar } from "react-icons/bs";
+// import { BsCalendar } from "react-icons/bs";
 import { FaImage, FaSearch } from "react-icons/fa";
 import { TNote } from "./note.type";
 
