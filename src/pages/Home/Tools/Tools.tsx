@@ -16,6 +16,7 @@ const Tools = () => {
     { name: "Postman", icon: "/src/assets/svg-icons-tools/postman.svg" },
     { name: "VS Code", icon: "/src/assets/svg-icons-tools/vs-code.svg" },
     { name: "Obsidian", icon: "/src/assets/svg-icons-tools/obsidian.svg" },
+    { name: "Trello", icon: "/src/assets/svg-icons-tools/trello.svg" },
     { name: "Notion", icon: "/src/assets/svg-icons-tools/notion.svg" },
     { name: "NOSQL Booster", icon: "/src/assets/svg-icons-tools/nosql.svg" },
     { name: "Pieces", icon: "/src/assets/svg-icons-tools/pieces.svg" },

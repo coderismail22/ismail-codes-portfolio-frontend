@@ -15,9 +15,12 @@ import axios from "axios";
 const categoriesOptions = [
   { value: "html", label: "HTML" },
   { value: "css", label: "CSS" },
-  { value: "react", label: "React" },
   { value: "javascript", label: "JavaScript" },
-  // Add more categories as needed
+  { value: "react", label: "React" },
+  { value: "mongodb", label: "MongoDB" },
+  { value: "mongoose", label: "Mongoose" },
+  { value: "nodejs", label: "NodeJS" },
+  { value: "expressjs", label: "ExpressJS" },
 ];
 
 type TSelectOption = {
@@ -82,7 +85,10 @@ const MyMarkdownEditor = () => {
       <h1 className="text-2xl font-semibold mb-6 mt-5 text-center text-white ">
         Publish a New Note
       </h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="bg-[#CBD5E1] p-1 rounded-md">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="bg-[#CBD5E1] p-1 rounded-md"
+      >
         {/* Title */}
         <div>
           <label className="block font-medium text-white ">Title</label>
