@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import MdEditor from "react-markdown-editor-lite";
 import "react-markdown-editor-lite/lib/index.css";
@@ -28,14 +29,17 @@ type TSelectOption = {
   label: string;
 };
 
+type NoteFormData = {
+  title: string;
+};
+
 const MyMarkdownEditor = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-    watch,
-  } = useForm();
+  } = useForm<NoteFormData>();
   const [uploadedImageUrl, setUploadedImageUrl] = useState<string>("");
   const [markdownContent, setMarkdownContent] = useState<string>("");
   const [selectedCategories, setSelectedCategories] = useState<TSelectOption[]>(
@@ -52,7 +56,7 @@ const MyMarkdownEditor = () => {
     setSelectedCategories(selectedOptions);
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: NoteFormData) => {
     const noteData = {
       title: data?.title,
       author: "Ismail",
@@ -97,7 +101,7 @@ const MyMarkdownEditor = () => {
             className="w-full border border-gray-300 rounded p-2 "
             {...register("title", { required: "Title is required" })}
           />
-          {errors.title && (
+          {errors.title && errors.title.message && (
             <p className="text-red-500 text-sm">{errors.title.message}</p>
           )}
         </div>

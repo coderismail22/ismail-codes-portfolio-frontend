@@ -8,7 +8,6 @@ import moment from "moment";
 import debounce from "lodash.debounce"; // Debouncing utility
 import DatePicker from "react-datepicker"; // Datepicker for filtering dates
 import "react-datepicker/dist/react-datepicker.css"; // Datepicker styles
-import { BsCalendar } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
 
 // Type definition for a single blog post

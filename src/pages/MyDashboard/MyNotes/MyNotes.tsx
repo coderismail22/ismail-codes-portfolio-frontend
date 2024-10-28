@@ -8,7 +8,6 @@ import moment from "moment";
 import debounce from "lodash.debounce";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { BsCalendar } from "react-icons/bs";
 import { FaImage, FaSearch } from "react-icons/fa";
 
 export interface Note {
@@ -127,9 +126,9 @@ const MyNotes = () => {
       <div className="h-screen flex items-center justify-center">
         <RotatingLines
           visible={true}
-          height="46"
+          // height="46"
           width="46"
-          color="grey"
+          // color="grey"
           strokeWidth="5"
           animationDuration="0.75"
           ariaLabel="rotating-lines-loading"

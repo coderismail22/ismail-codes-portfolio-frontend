@@ -2,20 +2,22 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
-import axios from "axios";
 import { RotatingLines } from "react-loader-spinner";
 import { LogoutButton } from "../LogoutButton/LogoutButton";
-
+type ProfileFormData = {
+  oldPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+};
 const MyProfile = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
     reset,
-  } = useForm();
+  } = useForm<ProfileFormData>();
 
   useEffect(() => {
     const checkAuthStatus = async () => {
@@ -47,7 +49,7 @@ const MyProfile = () => {
     checkAuthStatus();
   }, []);
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: ProfileFormData) => {
     if (data.newPassword !== data.confirmPassword) {
       return Swal.fire("Error", "Passwords do not match", "error");
     }
@@ -74,6 +76,7 @@ const MyProfile = () => {
         Swal.fire("Error", "Password change failed", "error");
       }
     } catch (error) {
+      console.error("An error occurred", error);
       Swal.fire("Error", "Password change failed", "error");
     }
   };
@@ -84,9 +87,9 @@ const MyProfile = () => {
       <div className="h-screen flex items-center justify-center">
         <RotatingLines
           visible={true}
-          height="46"
+          // height="46"
           width="46"
-          color="grey"
+          // color="grey"
           strokeWidth="5"
           animationDuration="0.75"
           ariaLabel="rotating-lines-loading"
