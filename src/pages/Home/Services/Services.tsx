@@ -31,7 +31,7 @@ const Services = () => {
       initial="hidden"
       animate={inView ? "visible" : "hidden"} // Animate only when in view
       style={{
-        backgroundImage: "url(/src/assets/service-bg.jpg)",
+        backgroundImage: "url(src/assets/service-bg.jpg)",
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",

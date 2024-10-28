@@ -11,19 +11,19 @@ const Skills = () => {
   });
 
   const skills = [
-    { name: "HTML", icon: "/src/assets/svg-icons/html.svg" },
-    { name: "CSS", icon: "/src/assets/svg-icons/css.svg" },
-    { name: "JavaScript", icon: "/src/assets/svg-icons/js.svg" },
-    { name: "TypeScript", icon: "/src/assets/svg-icons/ts.svg" },
-    { name: "Tailwind CSS", icon: "/src/assets/svg-icons/tailwind.svg" },
-    { name: "Bootstrap", icon: "/src/assets/svg-icons/bootstrap.svg" },
-    { name: "React JS", icon: "/src/assets/svg-icons/react.svg" },
-    { name: "Next JS", icon: "/src/assets/svg-icons/nextjs.svg" },
-    { name: "Redux", icon: "/src/assets/svg-icons/redux.svg" },
-    { name: "Node JS", icon: "/src/assets/svg-icons/nodejs.svg" },
-    { name: "Express JS", icon: "/src/assets/svg-icons/express.svg" },
-    { name: "MongoDB", icon: "/src/assets/svg-icons/mongodb.svg" },
-    { name: "Mongoose", icon: "/src/assets/svg-icons/mongoose.svg" },
+    { name: "HTML", icon: "/svg-icons/html.svg" },
+    { name: "CSS", icon: "/svg-icons/css.svg" },
+    { name: "JavaScript", icon: "/svg-icons/js.svg" },
+    { name: "TypeScript", icon: "/svg-icons/ts.svg" },
+    { name: "Tailwind CSS", icon: "/svg-icons/tailwind.svg" },
+    { name: "Bootstrap", icon: "/svg-icons/bootstrap.svg" },
+    { name: "React JS", icon: "/svg-icons/react.svg" },
+    { name: "Next JS", icon: "/svg-icons/nextjs.svg" },
+    { name: "Redux", icon: "/svg-icons/redux.svg" },
+    { name: "Node JS", icon: "/svg-icons/nodejs.svg" },
+    { name: "Express JS", icon: "/svg-icons/express.svg" },
+    { name: "MongoDB", icon: "/svg-icons/mongodb.svg" },
+    { name: "Mongoose", icon: "/svg-icons/mongoose.svg" },
   ];
 
   const containerVariants = {

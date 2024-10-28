@@ -11,17 +11,17 @@ const Tools = () => {
   });
 
   const skills = [
-    { name: "Git", icon: "/src/assets/svg-icons-tools/git.svg" },
-    { name: "GitHub", icon: "/src/assets/svg-icons-tools/github.svg" },
-    { name: "Postman", icon: "/src/assets/svg-icons-tools/postman.svg" },
-    { name: "VS Code", icon: "/src/assets/svg-icons-tools/vs-code.svg" },
-    { name: "Obsidian", icon: "/src/assets/svg-icons-tools/obsidian.svg" },
-    { name: "Trello", icon: "/src/assets/svg-icons-tools/trello.svg" },
-    { name: "Notion", icon: "/src/assets/svg-icons-tools/notion.svg" },
-    { name: "NOSQL Booster", icon: "/src/assets/svg-icons-tools/nosql.svg" },
-    { name: "Pieces", icon: "/src/assets/svg-icons-tools/pieces.svg" },
-    { name: "MongoDB Compass", icon: "/src/assets/svg-icons-tools/mongodb-compass.svg" },
-    { name: "Sider", icon: "/src/assets/svg-icons-tools/sider.svg" },
+    { name: "Git", icon: "/svg-icons-tools/git.svg" },
+    { name: "GitHub", icon: "/svg-icons-tools/github.svg" },
+    { name: "Postman", icon: "/svg-icons-tools/postman.svg" },
+    { name: "VS Code", icon: "/svg-icons-tools/vs-code.svg" },
+    { name: "Obsidian", icon: "/svg-icons-tools/obsidian.svg" },
+    { name: "Trello", icon: "/svg-icons-tools/trello.svg" },
+    { name: "Notion", icon: "/svg-icons-tools/notion.svg" },
+    { name: "NOSQL Booster", icon: "/svg-icons-tools/nosql.svg" },
+    { name: "Pieces", icon: "/svg-icons-tools/pieces.svg" },
+    { name: "MongoDB Compass", icon: "/svg-icons-tools/mongodb-compass.svg" },
+    { name: "Sider", icon: "/svg-icons-tools/sider.svg" },
   ];
 
   const containerVariants = {
