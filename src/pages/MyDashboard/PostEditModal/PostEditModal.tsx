@@ -1,21 +1,21 @@
-import { useState, useEffect, useRef } from "react";
-import JoditEditor from "jodit-react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import RichTextEditor from "../RichTextEditor/RichTextEditor";
 
-const PostEditModal = ({ isOpen, onClose, post, onPostUpdate }) => {
+const PostEditModal = ({ isOpen, onClose, post, onPostUpdate }: any) => {
   const [title, setTitle] = useState(post.title || "");
   const [body, setBody] = useState(post.body || "");
   const [uploadedImageUrl, setUploadedImageUrl] = useState(post.imgUrl || "");
 
   //child to parent state lifting
-  const handleContentChange = (newContent) => {
+  const handleContentChange = (newContent: any) => {
     setBody(newContent); // Update the state in the parent
   };
 
-  const editorRef = useRef(null);
+  // const editorRef = useRef(null);
 
   useEffect(() => {
     setTitle(post.title || "");
@@ -31,7 +31,7 @@ const PostEditModal = ({ isOpen, onClose, post, onPostUpdate }) => {
     };
     try {
       // TODO: Add Server Url
-      const response = await axios.patch(
+      await axios.patch(
         `http://localhost:5000/api/v1/blog/${post._id}`,
         updatedPostData
       );

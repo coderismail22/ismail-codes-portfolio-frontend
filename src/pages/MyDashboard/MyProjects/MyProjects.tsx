@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from "axios";
 import { MdDeleteOutline, MdEdit } from "react-icons/md";
 import { useState, useEffect } from "react";
@@ -29,8 +30,8 @@ const MyProjects = () => {
   const [imgErrors, setImgErrors] = useState<{ [key: string]: boolean }>({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentProject, setCurrentProject] = useState<Project | null>(null);
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
+  const [startDate, setStartDate] = useState<Date | undefined>(undefined);
+  const [endDate, setEndDate] = useState<Date | undefined>(undefined);
 
   useEffect(() => {
     fetchProjects();
@@ -110,9 +111,9 @@ const MyProjects = () => {
       <div className="h-screen flex items-center justify-center">
         <RotatingLines
           visible={true}
-          height="46"
+          // height="46"
           width="46"
-          color="grey"
+          // color="gray"
           strokeWidth="5"
           animationDuration="0.75"
           ariaLabel="rotating-lines-loading"
@@ -147,7 +148,7 @@ const MyProjects = () => {
         <div className="flex space-x-4">
           <DatePicker
             selected={startDate}
-            onChange={(date) => setStartDate(date)}
+            onChange={(date) => setStartDate(date ?? undefined)}
             selectsStart
             startDate={startDate}
             endDate={endDate}
@@ -156,7 +157,7 @@ const MyProjects = () => {
           />
           <DatePicker
             selected={endDate}
-            onChange={(date) => setEndDate(date)}
+            onChange={(date) => setEndDate(date ?? undefined)}
             selectsEnd
             startDate={startDate}
             endDate={endDate}

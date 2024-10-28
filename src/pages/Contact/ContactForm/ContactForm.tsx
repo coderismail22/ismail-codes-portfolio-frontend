@@ -88,7 +88,7 @@ const ContactForm = () => {
       setLoading(true); // Start loading
       try {
         // TODO: Add Server Url
-        const res = await axios.post(
+        await axios.post(
           "http://localhost:5000/api/v1/email/send-contact-email-to-ismail",
           fullFormData,
           {

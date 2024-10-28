@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
 import MdEditor from "react-markdown-editor-lite"; // Ensure you have this library installed
 import ReactMarkdown from "react-markdown";
@@ -7,7 +8,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import ImageUpload from "../ImageUpload/ImageUpload";
 
-const NoteEditModal = ({ isOpen, onClose, note, onUpdate }) => {
+const NoteEditModal = ({ isOpen, onClose, note, onUpdate }: any) => {
   const [title, setTitle] = useState(note.title || "");
   const [uploadedImageUrl, setUploadedImageUrl] = useState(note.title || "");
   const [markdownContent, setMarkdownContent] = useState(note.body || "");
@@ -17,7 +18,7 @@ const NoteEditModal = ({ isOpen, onClose, note, onUpdate }) => {
     setMarkdownContent(note.body || "");
   }, [note]);
 
-  const handleEditorChange = ({ text }) => {
+  const handleEditorChange = ({ text }: any) => {
     setMarkdownContent(text); // Update markdown content
   };
 
@@ -30,7 +31,7 @@ const NoteEditModal = ({ isOpen, onClose, note, onUpdate }) => {
 
     try {
       // Replace with your server URL
-      const response = await axios.patch(
+      await axios.patch(
         `http://localhost:5000/api/v1/note/${note._id}`,
         updatedNoteData
       );

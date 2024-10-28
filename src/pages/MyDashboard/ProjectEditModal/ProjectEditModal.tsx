@@ -1,9 +1,32 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import Select from "react-select";
+
+interface TechnologyOption {
+  value: string;
+  label: string;
+}
+
+interface TagOption {
+  value: string;
+  label: string;
+}
+
+interface ProjectFormData {
+  title: string;
+  coverImage: string;
+  description: string;
+  liveLink?: string;
+  githubLink?: string;
+  duration?: string;
+  priorityMarkId?: string;
+  technologies: TechnologyOption[];
+  tags: TagOption[];
+}
 
 const techOptions = [
   { value: "React", label: "React" },
@@ -21,7 +44,7 @@ const tagOptions = [
   // Add more options as needed
 ];
 
-const ProjectEditModal = ({ isOpen, onClose, project, onUpdate }) => {
+const ProjectEditModal = ({ isOpen, onClose, project, onUpdate }: any) => {
   const {
     register,
     handleSubmit,
@@ -29,7 +52,7 @@ const ProjectEditModal = ({ isOpen, onClose, project, onUpdate }) => {
     setValue,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm<ProjectFormData>();
 
   useEffect(() => {
     if (project) {
@@ -42,16 +65,18 @@ const ProjectEditModal = ({ isOpen, onClose, project, onUpdate }) => {
         duration: project.duration || "",
         priorityMarkId: project.priorityMarkId || "",
         technologies:
-          project.technologies?.map((tech) => ({
+          project.technologies?.map((tech: string) => ({
             value: tech,
             label: tech,
           })) || [],
-        tags: project.tags?.map((tag) => ({ value: tag, label: tag })) || [],
+        tags:
+          project.tags?.map((tag: string) => ({ value: tag, label: tag })) ||
+          [],
       });
     }
   }, [project, reset]);
 
-  const handleUpdate = async (data) => {
+  const handleUpdate = async (data: ProjectFormData) => {
     const updatedProjectData = {
       ...data,
       technologies: data.technologies.map((tech) => tech.value),
@@ -59,7 +84,7 @@ const ProjectEditModal = ({ isOpen, onClose, project, onUpdate }) => {
     };
 
     try {
-      const response = await axios.patch(
+      await axios.patch(
         `http://localhost:5000/api/v1/project/${project._id}`,
         updatedProjectData
       );
@@ -100,7 +125,7 @@ const ProjectEditModal = ({ isOpen, onClose, project, onUpdate }) => {
               Upload Cover Image
             </label>
             <ImageUpload
-              setUploadedImageUrl={(url) => setValue("coverImage", url)}
+              setUploadedImageUrl={(url: string) => setValue("coverImage", url)}
             />
             {errors.coverImage && (
               <p className="text-red-500 text-sm">Image is required</p>

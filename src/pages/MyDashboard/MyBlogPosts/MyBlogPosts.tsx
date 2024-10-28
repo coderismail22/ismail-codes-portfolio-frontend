@@ -126,9 +126,9 @@ const MyBlogPosts = () => {
       <div className="h-screen flex items-center justify-center">
         <RotatingLines
           visible={true}
-          height="46"
+          // height="46"
           width="46"
-          color="grey"
+          // color="grey"
           strokeWidth="5"
           animationDuration="0.75"
           ariaLabel="rotating-lines-loading"

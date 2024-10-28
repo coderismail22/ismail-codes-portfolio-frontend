@@ -52,7 +52,7 @@ const PublishNewPost = () => {
     setContent(newContent); // Update the state in the parent
   };
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async () => {
     const postData = {
       title: title,
       author: "Ismail",
