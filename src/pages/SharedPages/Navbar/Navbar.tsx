@@ -61,10 +61,10 @@ const Navbar = () => {
             <Link to="/">
               {/* LOGO */}
               <img
-                src="/src/assets/ic.gif"
+                src="/ic.gif"
                 // width={"120px"}
                 className="w-[120px] h-full"
-                alt="Ismail Codes Logo"
+                alt="IC Logo"
               />
             </Link>
           </div>
