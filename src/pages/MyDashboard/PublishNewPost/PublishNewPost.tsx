@@ -65,7 +65,7 @@ const PublishNewPost = () => {
     try {
       // TODO: Replace with server url
       const res = await axios.post(
-        "http://localhost:5000/api/v1/blog",
+        "https://ismail-codes-portfolio-backend.vercel.app/api/v1/blog",
         postData,
         { headers: { "Content-Type": "application/json" } }
       );

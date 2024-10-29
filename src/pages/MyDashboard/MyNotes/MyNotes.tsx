@@ -36,7 +36,9 @@ const MyNotes = () => {
   const fetchNotes = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:5000/api/v1/note");
+      const { data } = await axios.get(
+        "https://ismail-codes-portfolio-backend.vercel.app/api/v1/note"
+      );
       const notes: Note[] = data?.data;
       setNotes(notes);
     } catch (error) {
@@ -69,7 +71,9 @@ const MyNotes = () => {
       });
 
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:5000/api/v1/note/${id}`);
+        await axios.delete(
+          `https://ismail-codes-portfolio-backend.vercel.app/api/v1/note/${id}`
+        );
       }
       Swal.fire("Deleted!", "Your note has been deleted.", "success");
       fetchNotes();

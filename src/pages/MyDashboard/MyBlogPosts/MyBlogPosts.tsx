@@ -35,7 +35,9 @@ const MyBlogPosts = () => {
   const fetchPosts = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:5000/api/v1/blog");
+      const { data } = await axios.get(
+        "https://ismail-codes-portfolio-backend.vercel.app/api/v1/blog"
+      );
       const posts: BlogPost[] = data?.data;
       setPosts(posts);
     } catch (error) {
@@ -70,7 +72,9 @@ const MyBlogPosts = () => {
       });
 
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:5000/api/v1/blog/${id}`);
+        await axios.delete(
+          `https://ismail-codes-portfolio-backend.vercel.app/api/v1/blog/${id}`
+        );
       }
       Swal.fire("Deleted!", "Your blog post has been deleted.", "success");
       fetchPosts();

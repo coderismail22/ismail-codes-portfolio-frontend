@@ -26,7 +26,9 @@ const Blog = () => {
   const fetchBlogPosts = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:5000/api/v1/blog");
+      const { data } = await axios.get(
+        "https://ismail-codes-portfolio-backend.vercel.app/api/v1/blog"
+      );
       setBlogPosts(data.data);
     } catch (error) {
       console.error("Error fetching blog posts:", error);

@@ -23,7 +23,7 @@ const NotFound = () => {
         </div>
         <div className="w-full md:w-1/2 text-center">
           <img
-            src="/src/assets/not-found.jpg"
+            src="/not-found.jpg"
             className="w-full max-w-lg lg:max-w-full mx-auto rounded-lg"
           />
         </div>

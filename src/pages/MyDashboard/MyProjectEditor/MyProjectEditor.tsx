@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
 import Select, { MultiValue } from "react-select";
@@ -80,7 +80,10 @@ const MyProjectEditor = () => {
     };
     console.log("refined project data", projectData);
     try {
-      await axios.post("http://localhost:5000/api/v1/project", projectData);
+      await axios.post(
+        "https://ismail-codes-portfolio-backend.vercel.app/api/v1/project",
+        projectData
+      );
       Swal.fire({
         icon: "success",
         title: "Project published!",

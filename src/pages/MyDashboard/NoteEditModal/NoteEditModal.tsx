@@ -32,7 +32,7 @@ const NoteEditModal = ({ isOpen, onClose, note, onUpdate }: any) => {
     try {
       // Replace with your server URL
       await axios.patch(
-        `http://localhost:5000/api/v1/note/${note._id}`,
+        `https://ismail-codes-portfolio-backend.vercel.app/api/v1/note/${note._id}`,
         updatedNoteData
       );
       Swal.fire("Success!", "Note updated successfully.", "success");

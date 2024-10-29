@@ -32,7 +32,7 @@ const PostEditModal = ({ isOpen, onClose, post, onPostUpdate }: any) => {
     try {
       // TODO: Add Server Url
       await axios.patch(
-        `http://localhost:5000/api/v1/blog/${post._id}`,
+        `https://ismail-codes-portfolio-backend.vercel.app/api/v1/blog/${post._id}`,
         updatedPostData
       );
       Swal.fire("Success!", "Post updated successfully.", "success");

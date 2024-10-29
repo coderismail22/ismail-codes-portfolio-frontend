@@ -27,7 +27,9 @@ const Notes = () => {
   const fetchNotes = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:5000/api/v1/note");
+      const { data } = await axios.get(
+        "https://ismail-codes-portfolio-backend.vercel.app/api/v1/note"
+      );
       console.log(data);
       setNotes(data.data);
     } catch (error) {

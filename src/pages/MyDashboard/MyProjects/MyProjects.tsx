@@ -40,7 +40,9 @@ const MyProjects = () => {
   const fetchProjects = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:5000/api/v1/project");
+      const { data } = await axios.get(
+        "https://ismail-codes-portfolio-backend.vercel.app/api/v1/project"
+      );
       setProjects(data?.data);
     } catch (error) {
       console.error("Error fetching projects:", error);
@@ -64,7 +66,9 @@ const MyProjects = () => {
       });
 
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:5000/api/v1/project/${id}`);
+        await axios.delete(
+          `https://ismail-codes-portfolio-backend.vercel.app/api/v1/project/${id}`
+        );
         Swal.fire("Deleted!", "Your project has been deleted.", "success");
         fetchProjects();
       }

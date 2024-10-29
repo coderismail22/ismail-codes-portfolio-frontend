@@ -69,7 +69,7 @@ const FullNote = () => {
   const fetchNoteDetail = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/v1/note/${id}`
+        `https://ismail-codes-portfolio-backend.vercel.app/api/v1/note/${id}`
       ); // Fetch note by ID
       setNote(data.data); // Access data properly from the response
       setLoading(false);

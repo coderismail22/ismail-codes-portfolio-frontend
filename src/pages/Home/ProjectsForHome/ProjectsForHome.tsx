@@ -14,7 +14,9 @@ const ProjectsForHome = () => {
   const fetchPosts = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:5000/api/v1/project");
+      const { data } = await axios.get(
+        "https://ismail-codes-portfolio-backend.vercel.app/api/v1/project"
+      );
       setProjects(data?.data);
     } catch (error) {
       console.error("Error fetching projects:", error);

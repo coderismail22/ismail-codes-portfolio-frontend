@@ -91,7 +91,7 @@ const HeroSection = () => {
 
         {/* Profile Image / Video */}
         <motion.div
-          className="order-1 md:order-2 flex flex-col items-center justify-center mt-5 md:mt-0 "
+          className="order-1 md:order-2 flex flex-col items-center justify-center px-5 mt-5 md:mt-0 "
           variants={videoVariant}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}

@@ -24,7 +24,7 @@ const MyProfile = () => {
       try {
         // TODO: Add Server Url
         const response = await fetch(
-          "http://localhost:5000/api/v1/admin/check-auth",
+          "https://ismail-codes-portfolio-backend.vercel.app/api/v1/admin/check-auth",
           {
             method: "POST",
             credentials: "include",
@@ -57,7 +57,7 @@ const MyProfile = () => {
     try {
       // Fetch request
       const response = await fetch(
-        "http://localhost:5000/api/v1/admin/change-password",
+        "https://ismail-codes-portfolio-backend.vercel.app/api/v1/admin/change-password",
         {
           method: "POST",
           credentials: "include", // Ensure cookies are included
