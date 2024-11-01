@@ -35,7 +35,7 @@ const MyDashboardNavbar = () => {
         <div className="flex items-center justify-between w-full">
           <Link to="/" className="w-[120px]">
             {/* LOGO */}
-            <img src="/src/assets/ic.gif" className="w-full" />
+            <img src="/ic.gif" className="w-full" />
           </Link>
 
           <section className="w-[50px]">
