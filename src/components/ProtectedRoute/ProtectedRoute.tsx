@@ -12,7 +12,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     const checkAuthStatus = async () => {
       try {
         const response = await fetch(
-          "https://ismail-codes-portfolio-backend.vercel.app/api/v1/admin/check-auth",
+          "https://ismail-codes-portfolio-backend-24.vercel.app/api/v1/admin/check-auth",
           {
             method: "POST",
             credentials: "include", // Include cookies with the request

@@ -27,7 +27,7 @@ const Blog = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        "https://ismail-codes-portfolio-backend.vercel.app/api/v1/blog"
+        "https://ismail-codes-portfolio-backend-24.vercel.app/api/v1/blog"
       );
       setBlogPosts(data.data);
     } catch (error) {

@@ -85,7 +85,7 @@ const ProjectEditModal = ({ isOpen, onClose, project, onUpdate }: any) => {
 
     try {
       await axios.patch(
-        `https://ismail-codes-portfolio-backend.vercel.app/api/v1/project/${project._id}`,
+        `https://ismail-codes-portfolio-backend-24.vercel.app/api/v1/project/${project._id}`,
         updatedProjectData
       );
       Swal.fire("Success!", "Project updated successfully.", "success");

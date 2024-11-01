@@ -8,7 +8,7 @@ export const LogoutButton = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "https://ismail-codes-portfolio-backend.vercel.app/api/v1/admin/logout",
+        "https://ismail-codes-portfolio-backend-24.vercel.app/api/v1/admin/logout",
         {},
         {
           withCredentials: true,

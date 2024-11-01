@@ -81,7 +81,7 @@ const MyProjectEditor = () => {
     console.log("refined project data", projectData);
     try {
       await axios.post(
-        "https://ismail-codes-portfolio-backend.vercel.app/api/v1/project",
+        "https://ismail-codes-portfolio-backend-24.vercel.app/api/v1/project",
         projectData
       );
       Swal.fire({

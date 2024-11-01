@@ -89,7 +89,7 @@ const ContactForm = () => {
       try {
         // TODO: Add Server Url
         await axios.post(
-          "https://ismail-codes-portfolio-backend.vercel.app/api/v1/email/send-contact-email-to-ismail",
+          "https://ismail-codes-portfolio-backend-24.vercel.app/api/v1/email/send-contact-email-to-ismail",
           fullFormData,
           {
             headers: { "Content-Type": "application/json" },

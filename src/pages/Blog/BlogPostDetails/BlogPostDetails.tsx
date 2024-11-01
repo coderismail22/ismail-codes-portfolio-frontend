@@ -15,7 +15,7 @@ const BlogPostDetail = () => {
     try {
       // TODO: Add Server Url
       const { data } = await axios.get(
-        `https://ismail-codes-portfolio-backend.vercel.app/api/v1/blog/${id}`
+        `https://ismail-codes-portfolio-backend-24.vercel.app/api/v1/blog/${id}`
       ); // Fetch blog post by ID
       setBlogPost(data.data); // Access data properly from the response
       setLoading(false);

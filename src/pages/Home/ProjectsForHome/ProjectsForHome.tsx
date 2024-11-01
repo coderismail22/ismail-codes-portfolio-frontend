@@ -15,7 +15,7 @@ const ProjectsForHome = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        "https://ismail-codes-portfolio-backend.vercel.app/api/v1/project"
+        "https://ismail-codes-portfolio-backend-24.vercel.app/api/v1/project"
       );
       setProjects(data?.data);
     } catch (error) {

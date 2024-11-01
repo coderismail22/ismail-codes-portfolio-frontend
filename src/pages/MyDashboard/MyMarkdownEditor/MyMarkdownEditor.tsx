@@ -68,7 +68,7 @@ const MyMarkdownEditor = () => {
     try {
       // TODO: Add Server Url
       const res = await axios.post(
-        "https://ismail-codes-portfolio-backend.vercel.app/api/v1/note",
+        "https://ismail-codes-portfolio-backend-24.vercel.app/api/v1/note",
         noteData,
         { headers: { "Content-Type": "application/json" } }
       );

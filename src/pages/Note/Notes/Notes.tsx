@@ -28,7 +28,7 @@ const Notes = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        "https://ismail-codes-portfolio-backend.vercel.app/api/v1/note"
+        "https://ismail-codes-portfolio-backend-24.vercel.app/api/v1/note"
       );
       console.log(data);
       setNotes(data.data);
