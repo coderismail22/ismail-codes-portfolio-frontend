@@ -11,19 +11,22 @@ export const TopBanner = () => {
   return (
     <div className="from-gray-900 via-gray-800 to-gray-900 text-white flex justify-center md:justify-between gap-5  px-5">
       <div className=" py-2 text-center font-semibold  font-poppins flex gap-5">
-        <Link to="https://www.facebook.com/sdgfoundation" target="_blank">
+        <Link to="https://www.facebook.com/ismail140722" target="_blank">
           <FaFacebook />
         </Link>
-        <Link to="#">
+        <Link to="https://x.com/ismailcodes22" target="_blank">
           <FaSquareXTwitter />
         </Link>
-        <Link to="#">
+        {/* <Link to="#">
           <FaInstagram />
-        </Link>
-        <Link to="#">
+        </Link> */}
+        <Link
+          to="https://www.linkedin.com/in/md-ismail-hossain-dev"
+          target="_blank"
+        >
           <FaLinkedin />
         </Link>
-        <Link to="#">
+        <Link to="https://www.youtube.com/@ismailcodes" target="_blank">
           <FaYoutube />
         </Link>
       </div>

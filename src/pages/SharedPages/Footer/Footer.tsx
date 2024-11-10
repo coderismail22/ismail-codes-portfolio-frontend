@@ -10,25 +10,31 @@ const Footer = () => {
     <div>
       <footer className="footer bg-[#0F172A] text-gray-300  p-2 text-[16px] flex flex-col md:flex-row items-center justify-center gap-2 md:gap-10">
         <div className="flex flex-col items-center justify-center">
-          <img src="/ic.gif" alt="Ismail Codes" className="w-[100px]" />
-
+          <Link to="/">
+            <img src="/ic.gif" alt="Ismail Codes" className="w-[100px]" />
+          </Link>
         </div>
         <div className="flex flex-col items-center">
-          <p className="text-right uppercase text-sm font-bold">Get connected</p>
+          <p className="text-right uppercase text-sm font-bold">
+            Get connected
+          </p>
           <div className=" py-2 text-center font-semibold  font-poppins flex gap-5">
-            <Link to="https://www.facebook.com/bdvisapro" target="_blank">
+            <Link to="https://www.facebook.com/ismail140722" target="_blank">
               <FaFacebook />
             </Link>
-            <Link to="https://www.facebook.com/bdvisapro" target="_blank">
+            <Link to="https://x.com/ismailcodes22" target="_blank">
               <FaSquareXTwitter />
             </Link>
-            <Link to="https://www.facebook.com/bdvisapro" target="_blank">
-              <FaInstagram />
-            </Link>
-            <Link to="https://www.facebook.com/bdvisapro" target="_blank">
+            {/* <Link to="#">
+          <FaInstagram />
+        </Link> */}
+            <Link
+              to="https://www.linkedin.com/in/md-ismail-hossain-dev"
+              target="_blank"
+            >
               <FaLinkedin />
             </Link>
-            <Link to="https://www.facebook.com/bdvisapro" target="_blank">
+            <Link to="https://www.youtube.com/@ismailcodes" target="_blank">
               <FaYoutube />
             </Link>
           </div>
@@ -37,7 +43,8 @@ const Footer = () => {
       <footer className="footer footer-center bg-[#26283b] text-white rounded px-10 py-1">
         <div>
           <p className="text-[16px] uppercase text-center font-semibold">
-             Copyright © {new Date().getFullYear()} Ismail Codes</p>
+            Copyright © {new Date().getFullYear()} Ismail Codes
+          </p>
         </div>
       </footer>
     </div>
