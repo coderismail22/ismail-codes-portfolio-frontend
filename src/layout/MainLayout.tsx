@@ -4,6 +4,7 @@ import Navbar from "../pages/SharedPages/Navbar/Navbar";
 import Footer from "../pages/SharedPages/Footer/Footer";
 import { TopBanner } from "../components/TopBanner/TopBanner";
 import Loader from "../components/Loader/Loader";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 
 const MainLayout = () => {
   const [loading, setLoading] = useState(true);
@@ -25,6 +26,7 @@ const MainLayout = () => {
     <div className="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
       <TopBanner />
       <Navbar />
+      <ScrollToTop />
       <Outlet />
       <Footer />
     </div>
